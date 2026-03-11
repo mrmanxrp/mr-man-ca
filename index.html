@@ -19,13 +19,13 @@
     --grey-light: #ABABAB;
     --white: #ffffff;
     --border: #E8E4DC;
-    color-scheme: light only;
+    color-scheme: light only; forced-color-adjust: none;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; background: #ffffff !important; }
+  html { scroll-behavior: smooth; background: #ffffff !important; background-color: #ffffff !important; }
   body {
     font-family: 'Barlow', sans-serif;
-    background: #ffffff !important;
+    background: #ffffff !important; background-color: #ffffff !important;
     color: var(--ink);
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
@@ -39,7 +39,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 48px; height: 68px;
-    background: #ffffff !important;
+    background: #ffffff !important; background-color: #ffffff !important;
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
@@ -73,7 +73,7 @@
     display: flex; flex-direction: column; justify-content: center;
     padding: 110px 48px 80px;
     border-bottom: 1px solid var(--border);
-    background: #ffffff !important;
+    background: #ffffff !important; background-color: #ffffff !important;
     position: relative; overflow: hidden;
   }
   .hero-kicker {
@@ -210,7 +210,7 @@
   /* MODAL */
   .modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(10,10,10,0.7); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; }
   .modal-overlay.open { display: flex; }
-  .modal { background: #ffffff !important; width: 90%; max-width: 480px; padding: 56px 48px; position: relative; animation: modalIn 0.3s ease; }
+  .modal { background: #ffffff !important; background-color: #ffffff !important; width: 90%; max-width: 480px; padding: 56px 48px; position: relative; animation: modalIn 0.3s ease; }
   @keyframes modalIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; font-size: 20px; color: var(--grey-light); }
   .modal-close:hover { color: var(--ink); }
@@ -262,7 +262,7 @@
     <li><a href="#atlas">Atlas</a></li>
     <li><a href="#about">About</a></li>
   </ul>
-  <a class="nav-cta" href="#" href="https://buy.stripe.com/4gM6oH3Mv8JSaQD2BL6EU00" target="_blank">Join Now</a>
+  <a class="nav-cta" href="https://buy.stripe.com/4gM6oH3Mv8JSaQD2BL6EU00" target="_blank">Join Now</a>
 </nav>
 
 <!-- HERO -->
@@ -369,7 +369,7 @@
       <ul class="discord-features">
         <li>Full Discord community access</li>
         <li>All public briefings and threads</li>
-        <li>Atlas summary reports (weekly)</li>
+        <li>Atlas daily morning briefs</li>
         <li>Priority support channel</li>
         <li>Module discount code included</li>
       </ul>
