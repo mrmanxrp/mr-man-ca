@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
 <title>Mr. Man Financial Intelligence</title>
+<meta name="description" content="Private financial intelligence for serious investors. Daily briefings, live sessions, and education on the monetary reset, digital assets, and financial infrastructure.">
+<link rel="canonical" href="https://mr-man.ca/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mr. Man">
+<meta property="og:title" content="Mr. Man Financial Intelligence">
+<meta property="og:description" content="Private financial intelligence for serious investors. Daily briefings, live sessions, and education on the monetary reset, digital assets, and financial infrastructure.">
+<meta property="og:url" content="https://mr-man.ca/">
+<meta property="og:image" content="https://mr-man.ca/assets/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mr. Man Financial Intelligence">
+<meta name="twitter:description" content="Private financial intelligence for serious investors.">
+<meta name="twitter:image" content="https://mr-man.ca/assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:wght@300;400;500&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -127,6 +139,14 @@ footer{background:var(--ink);padding:44px 48px}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s,transform 0.6s}
 .reveal.on{opacity:1;transform:none}
 .d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+
+/* FOCUS */
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
 
 /* MOBILE */
 @media(max-width:768px){

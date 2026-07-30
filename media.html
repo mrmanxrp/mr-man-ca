@@ -6,6 +6,17 @@
 <meta name="color-scheme" content="light only">
 <title>Media & Speaking — Mr. Man</title>
 <meta name="description" content="Interviews, speaking engagements, and press resources. Conversations on financial infrastructure, digital assets, and systemic change.">
+<link rel="canonical" href="https://mr-man.ca/media">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Mr. Man">
+<meta property="og:title" content="Media & Speaking — Mr. Man">
+<meta property="og:description" content="Interviews, speaking engagements, and press resources. Conversations on financial infrastructure, digital assets, and systemic change.">
+<meta property="og:url" content="https://mr-man.ca/media">
+<meta property="og:image" content="https://mr-man.ca/assets/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Media & Speaking — Mr. Man">
+<meta name="twitter:description" content="Interviews, speaking engagements, and press resources.">
+<meta name="twitter:image" content="https://mr-man.ca/assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:wght@300;400;500&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -161,6 +172,20 @@ footer{background:var(--ink);padding:44px 48px}
 .faq-item[open] .faq-icon{transform:rotate(45deg)}
 .faq-answer{font-size:13px;font-weight:300;line-height:1.85;color:var(--grey);padding-bottom:22px;max-width:640px}
 
+/* FOCUS */
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* DISABLED PLACEHOLDER LINKS */
+.link-disabled{color:var(--gl);cursor:default;pointer-events:none;opacity:0.6}
+
+/* EMPTY STATE (shown when a data array is empty) */
+.empty-state{grid-column:1/-1;width:100%;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gl);padding:32px 24px;text-align:center;background:#fff}
+
 /* MOBILE */
 @media(max-width:768px){
   nav{padding:0 20px}.nav-links{display:none}
@@ -221,6 +246,7 @@ footer{background:var(--ink);padding:44px 48px}
   <div class="sec-inner">
     <div class="reveal" style="max-width:720px;">
       <div class="kicker">About Mr. Man</div>
+      <h2>The research <em>behind the conversation.</em></h2>
       <div class="about-body" id="media-bio"></div>
     </div>
   </div>
@@ -386,15 +412,32 @@ footer{background:var(--ink);padding:44px 48px}
 
 function esc(str){
   const d = document.createElement('div');
-  d.textContent = str;
+  d.textContent = str == null ? '' : String(str);
   return d.innerHTML;
+}
+
+// A "real" link is a non-empty URL that isn't the "#" placeholder.
+// Anything else renders as inert, visibly-labeled text instead of a
+// dead link, so a visitor never lands on a broken or empty anchor.
+function isLink(url){
+  return !!url && url !== '#';
+}
+
+function emptyState(list, message){
+  if (Array.isArray(list) && list.length > 0) return null;
+  return `<div class="empty-state">${esc(message)}</div>`;
 }
 
 function renderLogos(){
   const el = document.getElementById('logo-wall');
-  el.innerHTML = featuredInLogos.map(l =>
-    `<a class="logo-item" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)}</a>`
-  ).join('');
+  const empty = emptyState(featuredInLogos, 'Logos coming soon.');
+  if (empty) { el.innerHTML = empty; return; }
+  el.innerHTML = featuredInLogos.map(l => {
+    const name = esc(l && l.name || 'Untitled');
+    return isLink(l && l.url)
+      ? `<a class="logo-item" href="${esc(l.url)}" target="_blank" rel="noopener">${name}</a>`
+      : `<span class="logo-item">${name}</span>`;
+  }).join('');
 }
 
 function renderBio(){
@@ -408,81 +451,109 @@ function renderBio(){
 
 function renderTopics(){
   const el = document.getElementById('topics-grid');
+  const empty = emptyState(mediaTopics, 'Topic list coming soon.');
+  if (empty) { el.innerHTML = empty; return; }
   el.innerHTML = mediaTopics.map(t => `
     <div class="topic-card">
-      <div class="topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${mediaIcons[t.icon] || ''}</svg></div>
-      <div class="topic-title">${esc(t.title)}</div>
-      <div class="topic-desc">${esc(t.description)}</div>
+      <div class="topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${(t && mediaIcons[t.icon]) || mediaIcons.compass}</svg></div>
+      <div class="topic-title">${esc(t && t.title || 'Untitled Topic')}</div>
+      <div class="topic-desc">${esc(t && t.description || '')}</div>
     </div>
   `).join('');
 }
 
 function renderAppearances(){
   const el = document.getElementById('appear-grid');
-  el.innerHTML = mediaAppearances.map(a => `
+  const empty = emptyState(mediaAppearances, 'No appearances published yet. Check back soon.');
+  if (empty) { el.innerHTML = empty; return; }
+  el.innerHTML = mediaAppearances.map(a => {
+    const watch = isLink(a && a.url)
+      ? `<a class="appear-watch" href="${esc(a.url)}" target="_blank" rel="noopener">Watch &rarr;</a>`
+      : `<span class="appear-watch link-disabled" aria-disabled="true">Coming Soon</span>`;
+    return `
     <div class="appear-card">
       <div class="appear-thumb">
-        <span class="appear-type">${esc(a.type)}</span>
-        <div class="appear-play"></div>
+        <span class="appear-type">${esc(a && a.type || 'Appearance')}</span>
+        <div class="appear-play" aria-hidden="true"></div>
       </div>
       <div class="appear-body">
-        ${a.placeholder ? '<span class="tag-sample">Sample</span>' : ''}
-        <div class="appear-org">${esc(a.org)}</div>
-        <div class="appear-title">${esc(a.title)}</div>
-        <div class="appear-date">${esc(a.date)}</div>
-        <div class="appear-desc">${esc(a.description)}</div>
-        <a class="appear-watch" href="${esc(a.url)}" target="_blank" rel="noopener">Watch &rarr;</a>
+        ${a && a.placeholder ? '<span class="tag-sample">Sample</span>' : ''}
+        <div class="appear-org">${esc(a && a.org || 'Unannounced')}</div>
+        <div class="appear-title">${esc(a && a.title || 'Untitled')}</div>
+        <div class="appear-date">${esc(a && a.date || '')}</div>
+        <div class="appear-desc">${esc(a && a.description || '')}</div>
+        ${watch}
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function renderConferences(){
   const el = document.getElementById('conf-list');
-  el.innerHTML = mediaConferences.map(c => `
+  const empty = emptyState(mediaConferences, 'No conference appearances announced yet.');
+  if (empty) { el.innerHTML = empty; return; }
+  el.innerHTML = mediaConferences.map(c => {
+    const details = isLink(c && c.url)
+      ? `<a class="appear-watch" href="${esc(c.url)}" target="_blank" rel="noopener">Details &rarr;</a>`
+      : `<span class="appear-watch link-disabled" aria-disabled="true">Details Soon</span>`;
+    const completed = c && c.status === 'completed';
+    return `
     <div class="conf-card">
-      <div class="conf-logo">${esc(c.logo)}</div>
+      <div class="conf-logo">${esc(c && c.logo || c && c.event || 'Untitled Event')}</div>
       <div>
-        <div class="conf-name">${esc(c.event)}</div>
-        <div class="conf-meta"><span>${esc(c.location)}</span><span>${esc(c.date)}</span></div>
-        <div class="conf-topic">${esc(c.topic)}</div>
+        <div class="conf-name">${esc(c && c.event || 'Untitled Event')}</div>
+        <div class="conf-meta"><span>${esc(c && c.location || 'Location TBD')}</span><span>${esc(c && c.date || 'Date TBD')}</span></div>
+        <div class="conf-topic">${esc(c && c.topic || '')}</div>
       </div>
       <div class="conf-side">
-        <div class="conf-status ${c.status === 'completed' ? 'completed' : ''}">${c.status === 'completed' ? 'Completed' : 'Upcoming'}</div>
-        <a class="appear-watch" href="${esc(c.url)}" target="_blank" rel="noopener">Details &rarr;</a>
+        <div class="conf-status ${completed ? 'completed' : ''}">${completed ? 'Completed' : 'Upcoming'}</div>
+        ${details}
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function renderAvailableFor(){
   const el = document.getElementById('available-for');
+  const empty = emptyState(availableFor, 'Availability details coming soon.');
+  if (empty) { el.innerHTML = empty; return; }
   el.innerHTML = availableFor.map(a => `
-    <div class="cred"><div class="cdot"></div><div><div class="ctitle">${esc(a.title)}</div><div class="cdesc">${esc(a.description)}</div></div></div>
+    <div class="cred"><div class="cdot" aria-hidden="true"></div><div><div class="ctitle">${esc(a && a.title || '')}</div><div class="cdesc">${esc(a && a.description || '')}</div></div></div>
   `).join('');
 }
 
 function renderPressKit(){
   const el = document.getElementById('press-grid');
-  el.innerHTML = pressKitAssets.map(p => `
+  const empty = emptyState(pressKitAssets, 'Press kit assets coming soon.');
+  if (empty) { el.innerHTML = empty; return; }
+  el.innerHTML = pressKitAssets.map(p => {
+    const dl = p && p.available && isLink(p.file)
+      ? `<a class="press-dl" href="${esc(p.file)}" download>Download &darr;</a>`
+      : `<span class="press-dl link-disabled" aria-disabled="true">Available Soon</span>`;
+    return `
     <div class="press-item">
-      <div class="press-name">${esc(p.name)}</div>
-      <div class="press-meta">${esc(p.meta)}</div>
-      <a class="press-dl" href="${esc(p.file)}" download>Download &darr;</a>
+      <div class="press-name">${esc(p && p.name || 'Untitled Asset')}</div>
+      <div class="press-meta">${esc(p && p.meta || '')}</div>
+      ${dl}
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function renderTestimonials(){
   const el = document.getElementById('testi-grid');
+  const empty = emptyState(mediaTestimonials, 'Testimonials coming soon.');
+  if (empty) { el.innerHTML = empty; return; }
   el.innerHTML = mediaTestimonials.map(t => `
     <div class="testi-card">
-      <div class="testi-quote">&ldquo;${esc(t.quote)}&rdquo;</div>
+      <div class="testi-quote">&ldquo;${esc(t && t.quote || '')}&rdquo;</div>
       <div class="testi-person">
-        <div class="testi-avatar">${esc(t.initials)}</div>
+        <div class="testi-avatar" aria-hidden="true">${esc(t && t.initials || '?')}</div>
         <div>
-          <div class="testi-name">${esc(t.name)}</div>
-          <div class="testi-org">${esc(t.org)}</div>
+          <div class="testi-name">${esc(t && t.name || 'Anonymous')}</div>
+          <div class="testi-org">${esc(t && t.org || '')}</div>
         </div>
       </div>
     </div>
@@ -491,10 +562,12 @@ function renderTestimonials(){
 
 function renderFaqs(){
   const el = document.getElementById('faq-list');
+  const empty = emptyState(mediaFaqs, 'FAQs coming soon.');
+  if (empty) { el.innerHTML = empty; return; }
   el.innerHTML = mediaFaqs.map(f => `
     <details class="faq-item">
-      <summary><span>${esc(f.q)}</span><span class="faq-icon">+</span></summary>
-      <div class="faq-answer">${esc(f.a)}</div>
+      <summary><span>${esc(f && f.q || '')}</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+      <div class="faq-answer">${esc(f && f.a || '')}</div>
     </details>
   `).join('');
 }

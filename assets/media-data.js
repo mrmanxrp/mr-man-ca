@@ -41,10 +41,12 @@ const mediaIcons = {
 
 /* ----------------------------------------------------------------------
    FEATURED IN — logo wall
-   Shape: { name: string, url: string (external link, optional "#") }
-   Rendered as text wordmarks (no image files required). To use a real
-   logo image instead, add a "logo" field with an image path and update
-   renderLogos() in media.html to prefer it when present.
+   Shape: { name: string, url: string }
+   Rendered as text wordmarks (no image files required). Leave url as "#"
+   until there's a real link — media.html renders "#" as plain
+   (non-clickable) text instead of a dead link. To use a real logo image
+   instead of a text wordmark, add a "logo" field with an image path and
+   update renderLogos() in media.html to prefer it when present.
    ---------------------------------------------------------------------- */
 const featuredInLogos = [
   { name: 'X Spaces', url: 'https://x.com/MrManXRP' },
@@ -88,7 +90,10 @@ const mediaTopics = [
      date: string,             display string, e.g. "2026" or "March 2026"
      type: string,             "Podcast" | "X Spaces" | "YouTube" | "Interview" ...
      description: string,      one to two sentence summary
-     url: string,              link to the recording ("#" if none yet)
+     url: string,              link to the recording. Leave as "#" until
+                                a real link exists — media.html renders
+                                "#" as disabled "Coming Soon" text instead
+                                of a dead link.
      placeholder: boolean      true = shows a "Sample" tag; remove once real
    }
    Newest first is the recommended order, but any order is fine.
@@ -133,7 +138,10 @@ const mediaAppearances = [
      date: string,
      topic: string,             presentation / panel title
      status: 'upcoming' | 'completed',
-     url: string                event page, recap, or recording ("#" if none)
+     url: string                event page, recap, or recording. Leave as
+                                 "#" until a real link exists — media.html
+                                 renders "#" as disabled "Details Soon"
+                                 text instead of a dead link.
    }
    Note: real events (e.g. Ripple Swell, SmartCon, KBW, Cosmoverse) should
    only be added here once confirmed — do not list an event as an
@@ -180,19 +188,23 @@ const availableFor = [
    PRESS KIT
    Shape: {
      name: string,
-     meta: string,       format / dimensions shown under the name
-     file: string         path to the actual asset — add real files under
-                           assets/press-kit/ and update this path to match
+     meta: string,        format / dimensions shown under the name
+     file: string,        path to the actual asset under assets/press-kit/
+     available: boolean   false until the real file is uploaded. While
+                           false, media.html shows a disabled "Available
+                           Soon" label instead of a download link that
+                           would 404. Flip to true only after the file at
+                           `file` actually exists in the repo.
    }
    ---------------------------------------------------------------------- */
 const pressKitAssets = [
-  { name: 'Professional Headshot', meta: 'JPG · 2400×2400', file: 'assets/press-kit/headshot.jpg' },
-  { name: 'Official Logo', meta: 'SVG + PNG', file: 'assets/press-kit/logo-pack.zip' },
-  { name: 'Short Bio', meta: 'TXT · 100 words', file: 'assets/press-kit/bio-short.txt' },
-  { name: 'Extended Bio', meta: 'TXT · 300 words', file: 'assets/press-kit/bio-extended.txt' },
-  { name: 'Media Photos', meta: 'ZIP · JPG', file: 'assets/press-kit/media-photos.zip' },
-  { name: 'Brand Assets', meta: 'ZIP · Colors, type, marks', file: 'assets/press-kit/brand-assets.zip' },
-  { name: 'Speaker One Sheet', meta: 'PDF', file: 'assets/press-kit/speaker-one-sheet.pdf' }
+  { name: 'Professional Headshot', meta: 'JPG · 2400×2400', file: 'assets/press-kit/headshot.jpg', available: false },
+  { name: 'Official Logo', meta: 'SVG + PNG', file: 'assets/press-kit/logo-pack.zip', available: false },
+  { name: 'Short Bio', meta: 'TXT · 100 words', file: 'assets/press-kit/bio-short.txt', available: false },
+  { name: 'Extended Bio', meta: 'TXT · 300 words', file: 'assets/press-kit/bio-extended.txt', available: false },
+  { name: 'Media Photos', meta: 'ZIP · JPG', file: 'assets/press-kit/media-photos.zip', available: false },
+  { name: 'Brand Assets', meta: 'ZIP · Colors, type, marks', file: 'assets/press-kit/brand-assets.zip', available: false },
+  { name: 'Speaker One Sheet', meta: 'PDF', file: 'assets/press-kit/speaker-one-sheet.pdf', available: false }
 ];
 
 
