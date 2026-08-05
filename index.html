@@ -36,6 +36,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .nav-links a:hover{color:var(--gold)}
 .nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:9px 22px;transition:all 0.2s}
 .nav-cta:hover{background:var(--ink);color:#fff}
+.nav-actions{display:flex;align-items:center;gap:12px}
+
+/* MOBILE NAV TOGGLE (hidden above 768px; see MOBILE block) */
+.nav-toggle{display:none;position:relative;width:36px;height:36px;flex-shrink:0;background:none;border:1px solid var(--border);padding:0;cursor:pointer;transition:border-color 0.2s}
+.nav-toggle:hover{border-color:var(--ink)}
+.nav-toggle-bar{position:absolute;top:17px;left:9px;width:18px;height:1px;background:var(--ink);transition:transform 0.25s ease,background-color 0.2s ease}
+.nav-toggle-bar::before,.nav-toggle-bar::after{content:'';position:absolute;left:0;width:18px;height:1px;background:var(--ink);transition:transform 0.25s ease}
+.nav-toggle-bar::before{top:-6px}
+.nav-toggle-bar::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar{background:transparent}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::after{transform:translateY(-6px) rotate(-45deg)}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:100px 48px 72px;position:relative;overflow:hidden}
@@ -146,17 +158,29 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 /* REDUCED MOTION */
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
+  .nav-toggle-bar,.nav-toggle-bar::before,.nav-toggle-bar::after{transition:none}
 }
 
 /* MOBILE */
 @media(max-width:768px){
-  nav{padding:0 20px}.nav-links{display:none}
+  nav{padding:0 20px}
+  .nav-toggle{display:block}
+  .nav-links{display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 12px 24px rgba(0,0,0,0.08);max-height:0;overflow-y:auto;opacity:0;visibility:hidden;transition:max-height 0.3s ease,opacity 0.25s ease;z-index:99}
+  .nav-links.open{max-height:min(480px,calc(100vh - 84px));opacity:1;visibility:visible}
+  .nav-links a{padding:16px 20px;font-size:12px;border-bottom:1px solid var(--border)}
+  .nav-links a:last-child{border-bottom:none}
   .hero{padding:88px 20px 56px}.hero-stats{flex-wrap:wrap;gap:16px}
   .dark{padding:56px 20px}
   .sec-inner{padding:56px 20px}
   .two{grid-template-columns:1fr;gap:36px}
   .srow{grid-template-columns:1fr;gap:4px}
   footer{padding:36px 20px}.foot-inner{flex-direction:column}
+}
+
+/* MOBILE + REDUCED MOTION (placed after MOBILE so it wins the cascade
+   when both conditions match — same specificity, source order decides) */
+@media(max-width:768px) and (prefers-reduced-motion:reduce){
+  .nav-links{transition:none}
 }
 </style>
 </head>
@@ -168,7 +192,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <img src="assets/logo.png" alt="Mr. Man">
     <span class="nav-brand">Mr. Man</span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="mobile-nav" aria-label="Mobile navigation">
     <a href="/">Home</a>
     <a href="#inside">Inside</a>
     <a href="#capitalos">CapitalOS</a>
@@ -176,7 +200,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <a href="#pricing">Pricing</a>
     <a href="#about">About</a>
   </div>
-  <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+  <div class="nav-actions">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -432,6 +461,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="foot-copy">2026 Mr Man, LLC. All rights reserved.</div>
 </footer>
 
+<script src="assets/mobile-nav.js"></script>
 <script>
 // Reveal
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')},{threshold:0.1}));
