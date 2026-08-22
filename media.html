@@ -131,9 +131,11 @@ footer{background:var(--ink);padding:44px 48px}
 /* Appearance cards */
 .appear-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
 .appear-card{background:#fff;display:flex;flex-direction:column}
-.appear-thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#232323,#111);position:relative;display:flex;align-items:center;justify-content:center}
-.appear-play{width:0;height:0;border-style:solid;border-width:8px 0 8px 14px;border-color:transparent transparent transparent rgba(255,255,255,0.9)}
-.appear-type{position:absolute;top:12px;left:12px;font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,0.4);padding:4px 9px}
+.appear-thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#232323,#111);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.appear-thumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.appear-thumb-shade{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.35),rgba(0,0,0,0.15));z-index:1}
+.appear-play{position:relative;z-index:2;width:0;height:0;border-style:solid;border-width:8px 0 8px 14px;border-color:transparent transparent transparent rgba(255,255,255,0.9)}
+.appear-type{position:absolute;top:12px;left:12px;z-index:2;font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,0.4);padding:4px 9px}
 .appear-body{padding:20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
 .appear-org{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold)}
 .appear-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;line-height:1.3;color:var(--ink)}
@@ -460,9 +462,10 @@ function emptyState(list, message){
 
 function renderLogos(){
   const el = document.getElementById('logo-wall');
-  const empty = emptyState(featuredInLogos, 'Logos coming soon.');
+  const logos = featuredInLogos.filter(l => l && l.visible !== false);
+  const empty = emptyState(logos, 'Logos coming soon.');
   if (empty) { el.innerHTML = empty; return; }
-  el.innerHTML = featuredInLogos.map(l => {
+  el.innerHTML = logos.map(l => {
     const name = esc(l && l.name || 'Untitled');
     return isLink(l && l.url)
       ? `<a class="logo-item" href="${esc(l.url)}" target="_blank" rel="noopener">${name}</a>`
@@ -500,9 +503,14 @@ function renderAppearances(){
     const watch = isLink(a && a.url)
       ? `<a class="appear-watch" href="${esc(a.url)}" target="_blank" rel="noopener">Watch &rarr;</a>`
       : `<span class="appear-watch link-disabled" aria-disabled="true">Coming Soon</span>`;
+    const thumb = a && a.thumbnail
+      ? `<img class="appear-thumb-img" src="${esc(a.thumbnail)}" alt="${esc(a.thumbnailAlt || a.title || 'Appearance thumbnail')}" loading="lazy"><div class="appear-thumb-shade" aria-hidden="true"></div>`
+      : '';
+    const dateLine = [a && a.date, a && a.duration].filter(Boolean).join(' · ');
     return `
     <div class="appear-card">
       <div class="appear-thumb">
+        ${thumb}
         <span class="appear-type">${esc(a && a.type || 'Appearance')}</span>
         <div class="appear-play" aria-hidden="true"></div>
       </div>
@@ -510,7 +518,7 @@ function renderAppearances(){
         ${a && a.placeholder ? '<span class="tag-sample">Sample</span>' : ''}
         <div class="appear-org">${esc(a && a.org || 'Unannounced')}</div>
         <div class="appear-title">${esc(a && a.title || 'Untitled')}</div>
-        <div class="appear-date">${esc(a && a.date || '')}</div>
+        <div class="appear-date">${esc(dateLine)}</div>
         <div class="appear-desc">${esc(a && a.description || '')}</div>
         ${watch}
       </div>
@@ -519,11 +527,37 @@ function renderAppearances(){
   }).join('');
 }
 
+// Emits schema.org VideoObject structured data for the appearances that
+// are actual videos (have a videoId + isoDate + isoDuration). Built only
+// from fields already supplied in mediaAppearances — no invented upload
+// dates, descriptions, authors, publishers, or view counts.
+function renderVideoStructuredData(){
+  const videos = mediaAppearances.filter(a => a && a.videoId && a.isoDate && a.isoDuration);
+  if (videos.length === 0) return;
+  const data = videos.map(a => ({
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: a.title,
+    description: a.description,
+    thumbnailUrl: a.thumbnail,
+    uploadDate: a.isoDate,
+    duration: a.isoDuration,
+    embedUrl: `https://www.youtube.com/embed/${a.videoId}`,
+    url: a.url
+  }));
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.id = 'video-structured-data';
+  script.textContent = JSON.stringify(data.length === 1 ? data[0] : data);
+  document.head.appendChild(script);
+}
+
 function renderConferences(){
   const el = document.getElementById('conf-list');
-  const empty = emptyState(mediaConferences, 'No conference appearances announced yet.');
+  const conferences = mediaConferences.filter(c => c && c.visible !== false);
+  const empty = emptyState(conferences, 'No conference appearances announced yet.');
   if (empty) { el.innerHTML = empty; return; }
-  el.innerHTML = mediaConferences.map(c => {
+  el.innerHTML = conferences.map(c => {
     const details = isLink(c && c.url)
       ? `<a class="appear-watch" href="${esc(c.url)}" target="_blank" rel="noopener">Details &rarr;</a>`
       : `<span class="appear-watch link-disabled" aria-disabled="true">Details Soon</span>`;
@@ -574,9 +608,10 @@ function renderPressKit(){
 
 function renderTestimonials(){
   const el = document.getElementById('testi-grid');
-  const empty = emptyState(mediaTestimonials, 'Testimonials coming soon.');
+  const testimonials = mediaTestimonials.filter(t => t && t.visible !== false);
+  const empty = emptyState(testimonials, 'Testimonials coming soon.');
   if (empty) { el.innerHTML = empty; return; }
-  el.innerHTML = mediaTestimonials.map(t => `
+  el.innerHTML = testimonials.map(t => `
     <div class="testi-card">
       <div class="testi-quote">&ldquo;${esc(t && t.quote || '')}&rdquo;</div>
       <div class="testi-person">
@@ -606,6 +641,7 @@ renderLogos();
 renderBio();
 renderTopics();
 renderAppearances();
+renderVideoStructuredData();
 renderConferences();
 renderAvailableFor();
 renderPressKit();
