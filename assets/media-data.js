@@ -303,39 +303,6 @@ const pressKitAssets = [
 
 
 /* ----------------------------------------------------------------------
-   TESTIMONIALS
-   Shape: { quote: string, name: string, org: string, initials: string, visible: boolean }
-   "initials" fills the placeholder avatar circle until real photos exist.
-   "visible: false" hides an entry from the public page while keeping the
-   record in place — used below because all three entries are still
-   development placeholders, not real testimonials.
-   ---------------------------------------------------------------------- */
-const mediaTestimonials = [
-  {
-    quote: '[Placeholder quote describing the discussion and its value to their audience.]',
-    name: '[Name]',
-    org: '[Organization / Show]',
-    initials: 'XX',
-    visible: false
-  },
-  {
-    quote: '[Placeholder quote describing the discussion and its value to their audience.]',
-    name: '[Name]',
-    org: '[Organization / Show]',
-    initials: 'XX',
-    visible: false
-  },
-  {
-    quote: '[Placeholder quote describing the discussion and its value to their audience.]',
-    name: '[Name]',
-    org: '[Organization / Show]',
-    initials: 'XX',
-    visible: false
-  }
-];
-
-
-/* ----------------------------------------------------------------------
    FAQ
    Shape: { q: string, a: string }
    ---------------------------------------------------------------------- */

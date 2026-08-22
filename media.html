@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:wght@300;400;500&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#B8922A;--gold-pale:rgba(184,146,42,0.08);--ink:#1A1A1A;--grey:#6B6B6B;--gl:#9A9A9A;--border:rgba(0,0,0,0.08)}
+:root{--gold:#B8922A;--gold-pale:rgba(184,146,42,0.08);--ink:#1A1A1A;--grey:#6B6B6B;--gl:#767676;--border:rgba(0,0,0,0.08)}
 html,body{background:#fff!important;color:var(--ink);font-family:'Barlow',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
 *{color-scheme:light!important}
 a{text-decoration:none}
@@ -168,15 +168,6 @@ footer{background:var(--ink);padding:44px 48px}
 .press-meta{font-size:11.5px;font-weight:300;color:var(--gl)}
 .press-dl{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-top:auto;padding-top:8px}
 
-/* Testimonials grid */
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
-.testi-card{background:#fff;padding:28px}
-.testi-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;font-weight:300;line-height:1.6;color:var(--ink);margin-bottom:22px}
-.testi-person{display:flex;align-items:center;gap:12px}
-.testi-avatar{width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;flex-shrink:0}
-.testi-name{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink)}
-.testi-org{font-size:11.5px;font-weight:300;color:var(--gl)}
-
 /* FAQ */
 .faq-list{max-width:760px}
 .faq-item{border-bottom:1px solid var(--border)}
@@ -237,11 +228,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   </a>
   <div class="nav-links" id="mobile-nav" aria-label="Mobile navigation">
     <a href="/">Home</a>
-    <a href="/#inside">Inside</a>
-    <a href="/#capitalos">CapitalOS</a>
+    <a href="/inside">Inside</a>
+    <a href="/capitalos">CapitalOS</a>
     <a href="/media" aria-current="page">Media</a>
-    <a href="/#pricing">Pricing</a>
-    <a href="/#about">About</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/about">About</a>
   </div>
   <div class="nav-actions">
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
@@ -374,17 +365,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="sec" id="testimonials">
-  <div class="sec-inner">
-    <div class="reveal" style="margin-bottom:32px;">
-      <div class="kicker">What Hosts Say</div>
-      <h2>From past <em>conversations.</em></h2>
-    </div>
-    <div class="testi-grid reveal d1" id="testi-grid"></div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="sec" id="faq">
   <div class="sec-inner">
@@ -417,11 +397,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
     </div>
     <div class="foot-links">
       <a href="/">Home</a>
-      <a href="/#inside">Inside</a>
-      <a href="/#capitalos">CapitalOS</a>
+      <a href="/inside">Inside</a>
+      <a href="/capitalos">CapitalOS</a>
       <a href="/media">Media</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/#about">About</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
     </div>
     <div class="foot-links">
       <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join Now</a>
@@ -606,25 +586,6 @@ function renderPressKit(){
   }).join('');
 }
 
-function renderTestimonials(){
-  const el = document.getElementById('testi-grid');
-  const testimonials = mediaTestimonials.filter(t => t && t.visible !== false);
-  const empty = emptyState(testimonials, 'Testimonials coming soon.');
-  if (empty) { el.innerHTML = empty; return; }
-  el.innerHTML = testimonials.map(t => `
-    <div class="testi-card">
-      <div class="testi-quote">&ldquo;${esc(t && t.quote || '')}&rdquo;</div>
-      <div class="testi-person">
-        <div class="testi-avatar" aria-hidden="true">${esc(t && t.initials || '?')}</div>
-        <div>
-          <div class="testi-name">${esc(t && t.name || 'Anonymous')}</div>
-          <div class="testi-org">${esc(t && t.org || '')}</div>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
 function renderFaqs(){
   const el = document.getElementById('faq-list');
   const empty = emptyState(mediaFaqs, 'FAQs coming soon.');
@@ -645,7 +606,6 @@ renderVideoStructuredData();
 renderConferences();
 renderAvailableFor();
 renderPressKit();
-renderTestimonials();
 renderFaqs();
 
 // Reveal on scroll

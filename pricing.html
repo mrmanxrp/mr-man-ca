@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Pricing — Mr. Man</title>
+<meta name="description" content="One membership, $97 per month, cancel anytime. Daily intelligence briefs, live sessions, entity structure education, and full curriculum access.">
+<link rel="canonical" href="https://mr-man.ca/pricing">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mr. Man">
+<meta property="og:title" content="Pricing — Mr. Man">
+<meta property="og:description" content="One membership, $97 per month, cancel anytime. Daily intelligence briefs, live sessions, entity structure education, and full curriculum access.">
+<meta property="og:url" content="https://mr-man.ca/pricing">
+<meta property="og:image" content="https://mr-man.ca/assets/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pricing — Mr. Man">
+<meta name="twitter:description" content="One membership, $97 per month, cancel anytime. Everything included from day one.">
+<meta name="twitter:image" content="https://mr-man.ca/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:wght@300;400;500&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8922A;--gold-pale:rgba(184,146,42,0.08);--ink:#1A1A1A;--grey:#6B6B6B;--gl:#767676;--border:rgba(0,0,0,0.08)}
+html,body{background:#fff!important;color:var(--ink);font-family:'Barlow',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+*{color-scheme:light!important}
+a{text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a[aria-current="page"]{color:var(--gold)}
+.nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:9px 22px;transition:all 0.2s}
+.nav-cta:hover{background:var(--ink);color:#fff}
+.nav-actions{display:flex;align-items:center;gap:12px}
+
+/* MOBILE NAV TOGGLE (hidden above 768px; see MOBILE block) */
+.nav-toggle{display:none;position:relative;width:36px;height:36px;flex-shrink:0;background:none;border:1px solid var(--border);padding:0;cursor:pointer;transition:border-color 0.2s}
+.nav-toggle:hover{border-color:var(--ink)}
+.nav-toggle-bar{position:absolute;top:17px;left:9px;width:18px;height:1px;background:var(--ink);transition:transform 0.25s ease,background-color 0.2s ease}
+.nav-toggle-bar::before,.nav-toggle-bar::after{content:'';position:absolute;left:0;width:18px;height:1px;background:var(--ink);transition:transform 0.25s ease}
+.nav-toggle-bar::before{top:-6px}
+.nav-toggle-bar::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar{background:transparent}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* HERO */
+.hero{min-height:50vh;display:flex;align-items:center;padding:120px 48px 48px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:0;right:0;width:50%;height:100%;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,146,42,0.03) 40px,rgba(184,146,42,0.03) 41px);pointer-events:none}
+.hero-content{max-width:680px;position:relative;z-index:1}
+.kicker{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.kicker::before{content:'';width:28px;height:1px;background:var(--gold)}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5.5vw,68px);font-weight:300;line-height:1.08;color:var(--ink);margin-bottom:20px}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:15px;font-weight:300;line-height:1.85;color:var(--grey);max-width:520px}
+
+/* SECTIONS */
+.sec{border-bottom:1px solid var(--border);background:#fff!important}
+.sec-inner{max-width:1080px;margin:0 auto;padding:56px 48px 72px}
+.sec h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:16px}
+.sec h2 em{font-style:italic;color:var(--gold)}
+.sec-desc{font-size:14px;font-weight:300;line-height:1.9;color:var(--grey);max-width:520px;margin-bottom:36px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+
+/* PRICING */
+.price-card{border:1px solid var(--ink);padding:44px}
+.price-amt{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--ink);line-height:1}
+.price-per{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey);margin-top:6px}
+.price-div{width:36px;height:1px;background:var(--gold);margin:24px 0}
+.pfeats{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.pfeat{display:flex;align-items:flex-start;gap:10px;font-size:13px;font-weight:300;color:var(--grey);line-height:1.6}
+.pfeat::before{content:'';width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:7px}
+
+.btn-gold{display:inline-block;background:var(--gold);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;padding:15px 38px;transition:background 0.2s}
+.btn-gold:hover{background:#9a7820}
+.btn-text{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);margin-left:24px;transition:color 0.2s}
+.btn-text:hover{color:var(--gold)}
+
+/* JOURNEY */
+.journey{display:flex;flex-direction:column;gap:12px}
+.jrow{display:flex;gap:14px}
+.jnum{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);flex-shrink:0;width:20px}
+.jtext{font-size:13px;font-weight:300;color:var(--grey);line-height:1.7}
+
+/* FAQ */
+.faq-list{max-width:760px}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.02em;color:var(--ink)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-icon{color:var(--gold);font-size:20px;font-weight:300;line-height:1;flex-shrink:0;transition:transform 0.2s}
+.faq-item[open] .faq-icon{transform:rotate(45deg)}
+.faq-answer{font-size:13px;font-weight:300;line-height:1.85;color:var(--grey);padding-bottom:22px;max-width:640px}
+
+/* CLOSING CTA */
+.dark{background:var(--ink)!important;padding:72px 48px;text-align:center}
+.dark-inner{max-width:580px;margin:0 auto}
+.dark .kicker{color:var(--gold);justify-content:center}
+.dark h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4.5vw,52px);font-weight:300;line-height:1.1;color:#fff;margin:16px 0 20px}
+.dark h2 em{font-style:italic;color:var(--gold)}
+.dark p{font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,0.6);margin-bottom:32px}
+
+/* FOOTER */
+footer{background:var(--ink);padding:44px 48px}
+.foot-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px}
+.foot-brand{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#fff;margin-bottom:4px}
+.foot-sub{font-size:12px;font-weight:300;color:rgba(255,255,255,0.35)}
+.foot-links{display:flex;flex-direction:column;gap:8px}
+.foot-links a{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);transition:color 0.2s}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{font-size:11px;font-weight:300;color:rgba(255,255,255,0.2);margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s,transform 0.6s}
+.reveal.on{opacity:1;transform:none}
+.d1{transition-delay:0.1s}
+
+/* FOCUS */
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .nav-toggle-bar,.nav-toggle-bar::before,.nav-toggle-bar::after{transition:none}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-toggle{display:block}
+  .nav-links{display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 12px 24px rgba(0,0,0,0.08);max-height:0;overflow-y:auto;opacity:0;visibility:hidden;transition:max-height 0.3s ease,opacity 0.25s ease;z-index:99}
+  .nav-links.open{max-height:min(480px,calc(100vh - 84px));opacity:1;visibility:visible}
+  .nav-links a{padding:16px 20px;font-size:12px;border-bottom:1px solid var(--border)}
+  .nav-links a:last-child{border-bottom:none}
+  .hero{padding:104px 20px 32px}
+  .dark{padding:56px 20px}
+  .sec-inner{padding:40px 20px 56px}
+  .two{grid-template-columns:1fr;gap:36px}
+  footer{padding:36px 20px}.foot-inner{flex-direction:column}
+}
+
+@media(max-width:768px) and (prefers-reduced-motion:reduce){
+  .nav-links{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">
+    <img src="assets/logo.png" alt="Mr. Man">
+    <span class="nav-brand">Mr. Man</span>
+  </a>
+  <div class="nav-links" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="/">Home</a>
+    <a href="/inside">Inside</a>
+    <a href="/capitalos">CapitalOS</a>
+    <a href="/media">Media</a>
+    <a href="/pricing" aria-current="page">Pricing</a>
+    <a href="/about">About</a>
+  </div>
+  <div class="nav-actions">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="kicker reveal">Membership</div>
+    <h1 class="reveal d1">One price.<br><em>Everything included.</em></h1>
+    <p class="hero-desc reveal d1">No tiers. No upsells. Everything available from day one. Members also receive priority access and a founding discount on CapitalOS at launch.</p>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="sec" id="price">
+  <div class="sec-inner">
+    <div class="two">
+      <div class="reveal">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Your First 30 Days</div>
+        <div class="journey">
+          <div class="jrow"><span class="jnum">1</span><p class="jtext">Your morning brief arrives before markets open. Precision. No noise.</p></div>
+          <div class="jrow"><span class="jnum">2</span><p class="jtext">You join War Room Friday. The conversation is different here.</p></div>
+          <div class="jrow"><span class="jnum">3</span><p class="jtext">You attend the LLC session. You understand what it costs not to structure properly.</p></div>
+          <div class="jrow"><span class="jnum">4</span><p class="jtext">By month end you understand more than 95 percent of investors. You are positioning.</p></div>
+        </div>
+      </div>
+      <div class="price-card reveal d1">
+        <div class="price-amt">$97</div>
+        <div class="price-per">Per Month Cancel Anytime</div>
+        <div class="price-div"></div>
+        <div class="pfeats">
+          <div class="pfeat">Daily institutional audio briefs morning and evening</div>
+          <div class="pfeat">Significant event alerts as they happen</div>
+          <div class="pfeat">DeFi Wednesdays with @FlareForward</div>
+          <div class="pfeat">War Room Fridays</div>
+          <div class="pfeat">Monthly LLC structure and asset protection session</div>
+          <div class="pfeat">Full curriculum under School</div>
+          <div class="pfeat">Curated regulatory and geopolitical timeline</div>
+          <div class="pfeat">Private Discord community access</div>
+          <div class="pfeat">Priority access and discount on CapitalOS</div>
+        </div>
+        <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" class="btn-gold" style="width:100%;text-align:center;display:block;">Join Now</a>
+        <p style="font-size:11px;color:var(--gl);margin-top:10px;text-align:center;">Secure checkout via Whop. Instant Discord access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="sec-inner">
+    <div class="reveal" style="margin-bottom:16px;">
+      <div class="kicker">Frequently Asked</div>
+      <h2>Good to <em>know.</em></h2>
+    </div>
+    <div class="faq-list reveal d1">
+      <details class="faq-item">
+        <summary><span>Can I cancel anytime?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Yes. Membership is billed monthly with no contract. Cancel whenever you like directly through Whop.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span>Are there any upsells after I join?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">No. Every feature listed above is included from day one at the $97/month price. There are no hidden tiers.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span>How do I get access after paying?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Checkout is handled securely through Whop. You receive instant access to the private Discord community after payment.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span>What is CapitalOS priority access?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">CapitalOS is in development. Current members get early access and a founding discount when it launches. See the <a href="/capitalos" style="color:var(--gold);">CapitalOS page</a> for details.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<div class="dark">
+  <div class="dark-inner reveal">
+    <div class="kicker">Position Accordingly</div>
+    <h2>The window is open.<br><em>Most will miss it.</em></h2>
+    <p>The monetary reset is not a prediction. It is a process already underway.</p>
+    <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" class="btn-gold">Join the Community $97/month</a>
+    <p style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:16px;">Secure checkout via Whop. Instant Discord access.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Mr. Man</div>
+      <div class="foot-sub">Mr Man, LLC Delaware</div>
+      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
+    </div>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="/inside">Inside</a>
+      <a href="/capitalos">CapitalOS</a>
+      <a href="/media">Media</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="foot-links">
+      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join Now</a>
+      <a href="https://x.com/MrManXRP" target="_blank">@MrManXRP</a>
+      <a href="https://www.skywealthdigital.com" target="_blank">Sky Wealth Digital</a>
+    </div>
+  </div>
+  <div class="foot-copy">2026 Mr Man, LLC. All rights reserved.</div>
+</footer>
+
+<script src="assets/mobile-nav.js"></script>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')},{threshold:0.1}));
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>

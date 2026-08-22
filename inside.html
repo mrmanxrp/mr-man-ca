@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Inside the Community — Mr. Man</title>
+<meta name="description" content="Daily institutional-grade intelligence briefings, a live curriculum, entity structure education, and a weekly schedule built for members positioning ahead of the monetary reset.">
+<link rel="canonical" href="https://mr-man.ca/inside">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mr. Man">
+<meta property="og:title" content="Inside the Community — Mr. Man">
+<meta property="og:description" content="Daily institutional-grade intelligence briefings, a live curriculum, entity structure education, and a weekly schedule built for members positioning ahead of the monetary reset.">
+<meta property="og:url" content="https://mr-man.ca/inside">
+<meta property="og:image" content="https://mr-man.ca/assets/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Inside the Community — Mr. Man">
+<meta name="twitter:description" content="Daily briefings, a live curriculum, and structure education for members positioning ahead of the monetary reset.">
+<meta name="twitter:image" content="https://mr-man.ca/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:wght@300;400;500&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8922A;--gold-pale:rgba(184,146,42,0.08);--ink:#1A1A1A;--grey:#6B6B6B;--gl:#767676;--border:rgba(0,0,0,0.08)}
+html,body{background:#fff!important;color:var(--ink);font-family:'Barlow',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+*{color-scheme:light!important}
+a{text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a[aria-current="page"]{color:var(--gold)}
+.nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:9px 22px;transition:all 0.2s}
+.nav-cta:hover{background:var(--ink);color:#fff}
+.nav-actions{display:flex;align-items:center;gap:12px}
+
+/* MOBILE NAV TOGGLE (hidden above 768px; see MOBILE block) */
+.nav-toggle{display:none;position:relative;width:36px;height:36px;flex-shrink:0;background:none;border:1px solid var(--border);padding:0;cursor:pointer;transition:border-color 0.2s}
+.nav-toggle:hover{border-color:var(--ink)}
+.nav-toggle-bar{position:absolute;top:17px;left:9px;width:18px;height:1px;background:var(--ink);transition:transform 0.25s ease,background-color 0.2s ease}
+.nav-toggle-bar::before,.nav-toggle-bar::after{content:'';position:absolute;left:0;width:18px;height:1px;background:var(--ink);transition:transform 0.25s ease}
+.nav-toggle-bar::before{top:-6px}
+.nav-toggle-bar::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar{background:transparent}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* HERO */
+.hero{min-height:60vh;display:flex;align-items:center;padding:120px 48px 56px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:0;right:0;width:50%;height:100%;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,146,42,0.03) 40px,rgba(184,146,42,0.03) 41px);pointer-events:none}
+.hero-content{max-width:680px;position:relative;z-index:1}
+.kicker{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.kicker::before{content:'';width:28px;height:1px;background:var(--gold)}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5.5vw,68px);font-weight:300;line-height:1.08;color:var(--ink);margin-bottom:20px}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:15px;font-weight:300;line-height:1.85;color:var(--grey);max-width:520px}
+
+/* SECTIONS */
+.sec{border-bottom:1px solid var(--border);background:#fff!important}
+.sec-inner{max-width:1080px;margin:0 auto;padding:72px 48px}
+.sec h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:16px}
+.sec h2 em{font-style:italic;color:var(--gold)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+
+/* TABS */
+.tabs-nav{display:flex;border-bottom:1px solid var(--border);margin-bottom:36px;flex-wrap:wrap}
+.tbtn{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);background:none;border:none;border-bottom:2px solid transparent;padding:12px 24px;cursor:pointer;margin-bottom:-1px;transition:all 0.2s}
+.tbtn.on{color:var(--gold);border-bottom-color:var(--gold)}
+.tbtn:hover{color:var(--gold)}
+.tpane{display:none}
+.tpane.on{display:block}
+
+/* SCHEDULE */
+.sched{border:1px solid var(--border)}
+.srow{display:grid;grid-template-columns:160px 1fr;gap:20px;padding:20px 24px;border-bottom:1px solid var(--border)}
+.srow:last-child{border-bottom:none}
+.swhen{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);line-height:1.6}
+.swhat{font-size:13px;font-weight:300;color:var(--ink);line-height:1.6}
+.swhat span{font-size:12px;color:var(--grey);display:block;margin-top:2px}
+
+/* CREDS */
+.creds{display:flex;flex-direction:column;gap:16px}
+.cred{display:flex;gap:12px;align-items:flex-start}
+.cdot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:6px}
+.ctitle{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);margin-bottom:2px}
+.cdesc{font-size:12px;font-weight:300;color:var(--grey);line-height:1.7}
+
+.btn-gold{display:inline-block;background:var(--gold);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;padding:15px 38px;transition:background 0.2s}
+.btn-gold:hover{background:#9a7820}
+.btn-text{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);margin-left:24px;transition:color 0.2s}
+.btn-text:hover{color:var(--gold)}
+
+/* CLOSING CTA */
+.dark{background:var(--ink)!important;padding:72px 48px;text-align:center}
+.dark-inner{max-width:580px;margin:0 auto}
+.dark .kicker{color:var(--gold);justify-content:center}
+.dark h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4.5vw,52px);font-weight:300;line-height:1.1;color:#fff;margin:16px 0 20px}
+.dark h2 em{font-style:italic;color:var(--gold)}
+.dark p{font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,0.6);margin-bottom:32px}
+
+/* FOOTER */
+footer{background:var(--ink);padding:44px 48px}
+.foot-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px}
+.foot-brand{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#fff;margin-bottom:4px}
+.foot-sub{font-size:12px;font-weight:300;color:rgba(255,255,255,0.35)}
+.foot-links{display:flex;flex-direction:column;gap:8px}
+.foot-links a{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);transition:color 0.2s}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{font-size:11px;font-weight:300;color:rgba(255,255,255,0.2);margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s,transform 0.6s}
+.reveal.on{opacity:1;transform:none}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}
+
+/* FOCUS */
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .nav-toggle-bar,.nav-toggle-bar::before,.nav-toggle-bar::after{transition:none}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-toggle{display:block}
+  .nav-links{display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 12px 24px rgba(0,0,0,0.08);max-height:0;overflow-y:auto;opacity:0;visibility:hidden;transition:max-height 0.3s ease,opacity 0.25s ease;z-index:99}
+  .nav-links.open{max-height:min(480px,calc(100vh - 84px));opacity:1;visibility:visible}
+  .nav-links a{padding:16px 20px;font-size:12px;border-bottom:1px solid var(--border)}
+  .nav-links a:last-child{border-bottom:none}
+  .hero{padding:104px 20px 40px}
+  .dark{padding:56px 20px}
+  .sec-inner{padding:56px 20px}
+  .two{grid-template-columns:1fr;gap:36px}
+  .srow{grid-template-columns:1fr;gap:4px}
+  footer{padding:36px 20px}.foot-inner{flex-direction:column}
+}
+
+@media(max-width:768px) and (prefers-reduced-motion:reduce){
+  .nav-links{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">
+    <img src="assets/logo.png" alt="Mr. Man">
+    <span class="nav-brand">Mr. Man</span>
+  </a>
+  <div class="nav-links" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="/">Home</a>
+    <a href="/inside" aria-current="page">Inside</a>
+    <a href="/capitalos">CapitalOS</a>
+    <a href="/media">Media</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/about">About</a>
+  </div>
+  <div class="nav-actions">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="kicker reveal">Inside the Community</div>
+    <h1 class="reveal d1">Everything you need.<br><em>Nothing you don't.</em></h1>
+    <p class="hero-desc reveal d2">Daily intelligence briefings, a live curriculum, and entity structure education, built for members who are positioning ahead of the shift rather than reacting to it.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<section class="sec" id="content">
+  <div class="sec-inner">
+    <div class="tabs-nav reveal">
+      <button class="tbtn on" onclick="switchTab(this,'intelligence')">Intelligence</button>
+      <button class="tbtn" onclick="switchTab(this,'education')">Education</button>
+      <button class="tbtn" onclick="switchTab(this,'structure')">Structure</button>
+      <button class="tbtn" onclick="switchTab(this,'schedule')">Schedule</button>
+    </div>
+
+    <div class="tpane on" id="tab-intelligence">
+      <div class="two">
+        <div>
+          <p style="font-size:14px;font-weight:300;line-height:1.9;color:var(--grey);margin-bottom:20px;">An LLM-powered briefing that continuously learns. Institutional-grade audio intelligence delivered every morning, every evening, and at any significant moment in the markets or regulatory landscape.</p>
+          <div style="display:inline-flex;align-items:center;background:var(--gold-pale);border:1px solid rgba(184,146,42,0.2);padding:7px 14px;margin-bottom:24px;">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">LLM Powered Continuously Learning</span>
+          </div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Sample Morning Brief</div>
+            <audio controls style="width:100%;max-width:340px;accent-color:var(--gold);"><source src="assets/sample-morning-brief.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
+          </div>
+        </div>
+        <div class="sched">
+          <div class="srow"><div class="swhen">Morning</div><div class="swhat">Daily brief before markets open.<span>What matters today and why.</span></div></div>
+          <div class="srow"><div class="swhen">Evening</div><div class="swhat">End of day wrap.<span>What moved, what it means, what to watch.</span></div></div>
+          <div class="srow"><div class="swhen">As Needed</div><div class="swhat">Significant event alerts.<span>Delivered when they matter, not on a schedule.</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tpane" id="tab-education">
+      <div class="two">
+        <div>
+          <p style="font-size:14px;font-weight:300;line-height:1.9;color:var(--grey);margin-bottom:24px;">The curriculum is live inside the community under School. History of money, cryptocurrency fundamentals, digital assets, CBDC use cases, and positioning metrics. PDFs, videos, conferences, and live interactions.</p>
+          <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" class="btn-gold">Access the Curriculum</a>
+        </div>
+        <div class="sched">
+          <div class="srow"><div class="swhen">Module I</div><div class="swhat">History of Money<span>Commodity money to Bretton Woods to what comes next.</span></div></div>
+          <div class="srow"><div class="swhen">Module II</div><div class="swhat">Cryptocurrency Fundamentals<span>What blockchain is, use cases, how digital assets function.</span></div></div>
+          <div class="srow"><div class="swhen">Module III</div><div class="swhat">Digital Money and CBDCs<span>Central bank currencies, jurisdictions, and implications.</span></div></div>
+          <div class="srow"><div class="swhen">Module IV</div><div class="swhat">Positioning Metrics<span>Proven frameworks for early positioning with conviction.</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tpane" id="tab-structure">
+      <div class="two">
+        <div>
+          <p style="font-size:14px;font-weight:300;line-height:1.9;color:var(--grey);margin-bottom:8px;">We do not just teach you what to own. We teach you how to own it.</p>
+          <p style="font-size:14px;font-weight:300;line-height:1.9;color:var(--grey);margin-bottom:24px;">Holding assets in the wrong structure costs you money every year. We teach LLC formation, entity architecture, asset migration, and the legal frameworks that protect serious wealth.</p>
+          <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" class="btn-gold">Join to Learn Structure</a>
+        </div>
+        <div class="creds">
+          <div class="cred"><div class="cdot"></div><div><div class="ctitle">LLC Formation</div><div class="cdesc">Why entities exist, how to form them, what belongs inside them.</div></div></div>
+          <div class="cred"><div class="cdot"></div><div><div class="ctitle">Asset Migration</div><div class="cdesc">Moving assets from personal to entity to mitigate liability and tax exposure.</div></div></div>
+          <div class="cred"><div class="cdot"></div><div><div class="ctitle">Tax Mitigation</div><div class="cdesc">Legal frameworks for reducing personal tax burden through structure.</div></div></div>
+          <div class="cred"><div class="cdot"></div><div><div class="ctitle">Infinite Banking</div><div class="cdesc">Whole life structures used as private banking vehicles for tax-advantaged liquidity.</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tpane" id="tab-schedule">
+      <div class="sched">
+        <div class="srow"><div class="swhen">Daily</div><div class="swhat">Intelligence Briefings<span>Morning, evening, and significant event alerts.</span></div></div>
+        <div class="srow"><div class="swhen">Wednesday 7:30 EST</div><div class="swhat">DeFi Wednesdays<span>Live with <a href="https://x.com/FlareForward" target="_blank" style="color:var(--gold);">@FlareForward</a>. DeFi deep dives and positioning.</span></div></div>
+        <div class="srow"><div class="swhen">Friday 7:30 EST</div><div class="swhat">War Room Fridays<span>End of week analysis. What happened, what it means.</span></div></div>
+        <div class="srow"><div class="swhen">Last Saturday 7:30 EST</div><div class="swhat">LLC Structure Meeting<span>Asset protection, entity formation, tax mitigation.</span></div></div>
+        <div class="srow"><div class="swhen">Always On</div><div class="swhat">School<span>Full curriculum live. PDFs, videos, and more.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<div class="dark">
+  <div class="dark-inner reveal">
+    <div class="kicker">Membership</div>
+    <h2>Ready to see it<br><em>from the inside?</em></h2>
+    <p>One price. Everything included. Cancel anytime.</p>
+    <a href="/pricing" class="btn-gold">View Pricing</a>
+    <a href="/" class="btn-text">Back to Home</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Mr. Man</div>
+      <div class="foot-sub">Mr Man, LLC Delaware</div>
+      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
+    </div>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="/inside">Inside</a>
+      <a href="/capitalos">CapitalOS</a>
+      <a href="/media">Media</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="foot-links">
+      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join Now</a>
+      <a href="https://x.com/MrManXRP" target="_blank">@MrManXRP</a>
+      <a href="https://www.skywealthdigital.com" target="_blank">Sky Wealth Digital</a>
+    </div>
+  </div>
+  <div class="foot-copy">2026 Mr Man, LLC. All rights reserved.</div>
+</footer>
+
+<script src="assets/mobile-nav.js"></script>
+<script>
+// Reveal
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')},{threshold:0.1}));
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// Tabs
+function switchTab(btn,name){
+  document.querySelectorAll('.tpane').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+name).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
