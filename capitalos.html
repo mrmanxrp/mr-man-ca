@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>CapitalOS — Mr. Man</title>
+<meta name="description" content="CapitalOS is a financial operating system that connects to your banks, reconciles income and expenses, and maps every asset across every entity you operate. In development, with priority access for members.">
+<link rel="canonical" href="https://mr-man.ca/capitalos">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mr. Man">
+<meta property="og:title" content="CapitalOS — Mr. Man">
+<meta property="og:description" content="A financial operating system that connects to your banks, reconciles income and expenses, and maps every asset across every entity you operate.">
+<meta property="og:url" content="https://mr-man.ca/capitalos">
+<meta property="og:image" content="https://mr-man.ca/assets/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CapitalOS — Mr. Man">
+<meta name="twitter:description" content="A financial operating system for tracking, structuring, and protecting capital across every entity you operate.">
+<meta name="twitter:image" content="https://mr-man.ca/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:wght@300;400;500&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8922A;--gold-pale:rgba(184,146,42,0.08);--ink:#1A1A1A;--grey:#6B6B6B;--gl:#767676;--border:rgba(0,0,0,0.08)}
+html,body{background:#fff!important;color:var(--ink);font-family:'Barlow',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+*{color-scheme:light!important}
+a{text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a[aria-current="page"]{color:var(--gold)}
+.nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:9px 22px;transition:all 0.2s}
+.nav-cta:hover{background:var(--ink);color:#fff}
+.nav-actions{display:flex;align-items:center;gap:12px}
+
+/* MOBILE NAV TOGGLE (hidden above 768px; see MOBILE block) */
+.nav-toggle{display:none;position:relative;width:36px;height:36px;flex-shrink:0;background:none;border:1px solid var(--border);padding:0;cursor:pointer;transition:border-color 0.2s}
+.nav-toggle:hover{border-color:var(--ink)}
+.nav-toggle-bar{position:absolute;top:17px;left:9px;width:18px;height:1px;background:var(--ink);transition:transform 0.25s ease,background-color 0.2s ease}
+.nav-toggle-bar::before,.nav-toggle-bar::after{content:'';position:absolute;left:0;width:18px;height:1px;background:var(--ink);transition:transform 0.25s ease}
+.nav-toggle-bar::before{top:-6px}
+.nav-toggle-bar::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar{background:transparent}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* HERO */
+.hero{min-height:60vh;display:flex;align-items:center;padding:120px 48px 56px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:0;right:0;width:50%;height:100%;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,146,42,0.03) 40px,rgba(184,146,42,0.03) 41px);pointer-events:none}
+.hero-content{max-width:680px;position:relative;z-index:1}
+.kicker{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.kicker::before{content:'';width:28px;height:1px;background:var(--gold)}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5.5vw,68px);font-weight:300;line-height:1.08;color:var(--ink);margin-bottom:20px}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:15px;font-weight:300;line-height:1.85;color:var(--grey);max-width:520px;margin-bottom:20px}
+.badge{display:inline-flex;align-items:center;background:var(--gold-pale);border:1px solid rgba(184,146,42,0.2);padding:8px 18px}
+.badge span{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold)}
+
+/* SECTIONS */
+.sec{border-bottom:1px solid var(--border);background:#fff!important}
+.sec-inner{max-width:1080px;margin:0 auto;padding:72px 48px}
+.sec h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:16px}
+.sec h2 em{font-style:italic;color:var(--gold)}
+.sec-desc{font-size:14px;font-weight:300;line-height:1.9;color:var(--grey);max-width:600px;margin-bottom:36px}
+
+/* CAPITALOS SLIDER */
+.cap-wrap{overflow:hidden;border:1px solid var(--border);border-radius:3px;position:relative;max-width:900px;margin:0 auto}
+.cap-track{display:flex;transition:transform 0.5s ease}
+.cap-track img{min-width:100%;width:100%;object-fit:cover;display:block}
+.cap-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.45);color:#fff;border:none;width:32px;height:32px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
+.cap-dots{display:flex;justify-content:center;gap:6px;margin-top:16px}
+.cap-dot{width:5px;height:5px;border-radius:50%;border:none;cursor:pointer;padding:0;background:var(--border)}
+.cap-dot.on{background:var(--gold)}
+
+/* CREDS */
+.creds{display:flex;flex-direction:column;gap:16px}
+.cred{display:flex;gap:12px;align-items:flex-start}
+.cdot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:6px}
+.ctitle{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);margin-bottom:2px}
+.cdesc{font-size:12px;font-weight:300;color:var(--grey);line-height:1.7}
+
+.btn-gold{display:inline-block;background:var(--gold);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;padding:15px 38px;transition:background 0.2s}
+.btn-gold:hover{background:#9a7820}
+.btn-text{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);margin-left:24px;transition:color 0.2s}
+.btn-text:hover{color:var(--gold)}
+
+/* CLOSING CTA */
+.dark{background:var(--ink)!important;padding:72px 48px;text-align:center}
+.dark-inner{max-width:580px;margin:0 auto}
+.dark .kicker{color:var(--gold);justify-content:center}
+.dark h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4.5vw,52px);font-weight:300;line-height:1.1;color:#fff;margin:16px 0 20px}
+.dark h2 em{font-style:italic;color:var(--gold)}
+.dark p{font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,0.6);margin-bottom:32px}
+
+/* FOOTER */
+footer{background:var(--ink);padding:44px 48px}
+.foot-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px}
+.foot-brand{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#fff;margin-bottom:4px}
+.foot-sub{font-size:12px;font-weight:300;color:rgba(255,255,255,0.35)}
+.foot-links{display:flex;flex-direction:column;gap:8px}
+.foot-links a{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);transition:color 0.2s}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{font-size:11px;font-weight:300;color:rgba(255,255,255,0.2);margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s,transform 0.6s}
+.reveal.on{opacity:1;transform:none}
+.d1{transition-delay:0.1s}
+
+/* FOCUS */
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .nav-toggle-bar,.nav-toggle-bar::before,.nav-toggle-bar::after{transition:none}
+  .cap-track{transition:none}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-toggle{display:block}
+  .nav-links{display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 12px 24px rgba(0,0,0,0.08);max-height:0;overflow-y:auto;opacity:0;visibility:hidden;transition:max-height 0.3s ease,opacity 0.25s ease;z-index:99}
+  .nav-links.open{max-height:min(480px,calc(100vh - 84px));opacity:1;visibility:visible}
+  .nav-links a{padding:16px 20px;font-size:12px;border-bottom:1px solid var(--border)}
+  .nav-links a:last-child{border-bottom:none}
+  .hero{padding:104px 20px 40px}
+  .dark{padding:56px 20px}
+  .sec-inner{padding:56px 20px}
+  footer{padding:36px 20px}.foot-inner{flex-direction:column}
+}
+
+@media(max-width:768px) and (prefers-reduced-motion:reduce){
+  .nav-links{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">
+    <img src="assets/logo.png" alt="Mr. Man">
+    <span class="nav-brand">Mr. Man</span>
+  </a>
+  <div class="nav-links" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="/">Home</a>
+    <a href="/inside">Inside</a>
+    <a href="/capitalos" aria-current="page">CapitalOS</a>
+    <a href="/media">Media</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/about">About</a>
+  </div>
+  <div class="nav-actions">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="kicker reveal">CapitalOS</div>
+    <h1 class="reveal d1">Your complete financial<br><em>operating system.</em></h1>
+    <p class="hero-desc reveal d1">CapitalOS connects to your banks, pulls receipts from your inbox, reconciles income and expenses, and maps every asset across every entity structure you operate. Accounting, tax preparation, and corporate governance in one platform. It knows where you are exposed when the world changes around your assets.</p>
+    <div class="badge reveal d1"><span>In Development. Members Receive Priority Discount.</span></div>
+  </div>
+</div>
+
+<!-- PREVIEW -->
+<section class="sec" id="preview">
+  <div class="sec-inner">
+    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 40px;">
+      <div class="kicker" style="justify-content:center;">Product Preview</div>
+      <h2>A look inside <em>the build.</em></h2>
+      <p class="sec-desc" style="margin:0 auto;">Early screens from CapitalOS in active development.</p>
+    </div>
+    <div class="reveal d1">
+      <div class="cap-wrap">
+        <div class="cap-track" id="cap-track">
+          <img src="assets/capitalos-1.jpg" alt="CapitalOS product screen">
+          <img src="assets/capitalos-2.jpg" alt="CapitalOS product screen">
+          <img src="assets/capitalos-3.jpg" alt="CapitalOS product screen">
+          <img src="assets/capitalos-4.jpg" alt="CapitalOS product screen">
+          <img src="assets/capitalos-5.jpg" alt="CapitalOS product screen">
+        </div>
+        <button class="cap-btn" onclick="prevSlide()" style="left:8px;" aria-label="Previous screen">&#8592;</button>
+        <button class="cap-btn" onclick="nextSlide()" style="right:8px;" aria-label="Next screen">&#8594;</button>
+      </div>
+      <div class="cap-dots" id="cap-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IT DOES -->
+<section class="sec" id="capabilities">
+  <div class="sec-inner">
+    <div class="reveal" style="margin-bottom:32px;max-width:640px;">
+      <div class="kicker">What It Does</div>
+      <h2>Built for operators,<br><em>not spreadsheets.</em></h2>
+    </div>
+    <div class="creds reveal d1">
+      <div class="cred"><div class="cdot"></div><div><div class="ctitle">Bank & Inbox Connections</div><div class="cdesc">Pulls transactions and receipts automatically instead of manual entry.</div></div></div>
+      <div class="cred"><div class="cdot"></div><div><div class="ctitle">Entity Mapping</div><div class="cdesc">Tracks every asset across every LLC, trust, or holding structure you operate.</div></div></div>
+      <div class="cred"><div class="cdot"></div><div><div class="ctitle">Reconciliation</div><div class="cdesc">Matches income and expenses across accounts and entities in one view.</div></div></div>
+      <div class="cred"><div class="cdot"></div><div><div class="ctitle">Accounting & Tax Prep</div><div class="cdesc">Keeps books audit-ready and organized for filing season.</div></div></div>
+      <div class="cred"><div class="cdot"></div><div><div class="ctitle">Corporate Governance</div><div class="cdesc">Centralizes the records and filings each entity needs to stay compliant.</div></div></div>
+      <div class="cred"><div class="cdot"></div><div><div class="ctitle">Exposure Mapping</div><div class="cdesc">Shows where you are exposed when regulation or markets shift around you.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<div class="dark">
+  <div class="dark-inner reveal">
+    <div class="kicker">Priority Access</div>
+    <h2>Members get first<br><em>access and a discount.</em></h2>
+    <p>CapitalOS is in active development. Join the community now to lock in priority access and a founding discount at launch.</p>
+    <a href="/pricing" class="btn-gold">View Pricing</a>
+    <a href="/" class="btn-text">Back to Home</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Mr. Man</div>
+      <div class="foot-sub">Mr Man, LLC Delaware</div>
+      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
+    </div>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="/inside">Inside</a>
+      <a href="/capitalos">CapitalOS</a>
+      <a href="/media">Media</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="foot-links">
+      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join Now</a>
+      <a href="https://x.com/MrManXRP" target="_blank">@MrManXRP</a>
+      <a href="https://www.skywealthdigital.com" target="_blank">Sky Wealth Digital</a>
+    </div>
+  </div>
+  <div class="foot-copy">2026 Mr Man, LLC. All rights reserved.</div>
+</footer>
+
+<script src="assets/mobile-nav.js"></script>
+<script>
+// Reveal
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')},{threshold:0.1}));
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// CapitalOS slider
+const slideCount=5;
+let ci=0;
+const ct=document.getElementById('cap-track');
+const dotsEl=document.getElementById('cap-dots');
+for(let i=0;i<slideCount;i++){
+  const b=document.createElement('button');
+  b.className='cap-dot'+(i===0?' on':'');
+  b.setAttribute('aria-label','Go to screen '+(i+1));
+  b.onclick=()=>goSlide(i);
+  dotsEl.appendChild(b);
+}
+const dots=dotsEl.querySelectorAll('.cap-dot');
+function render(){
+  ct.style.transform='translateX(-'+(ci*100)+'%)';
+  dots.forEach((d,i)=>d.classList.toggle('on',i===ci));
+}
+function goSlide(n){ci=n;render()}
+function nextSlide(){ci=(ci+1)%slideCount;render()}
+function prevSlide(){ci=(ci+slideCount-1)%slideCount;render()}
+let autoplay=setInterval(nextSlide,4500);
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+if(reduceMotion.matches){clearInterval(autoplay)}
+</script>
+</body>
+</html>

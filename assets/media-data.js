@@ -41,20 +41,25 @@ const mediaIcons = {
 
 /* ----------------------------------------------------------------------
    FEATURED IN — logo wall
-   Shape: { name: string, url: string }
+   Shape: { name: string, url: string, visible: boolean }
    Rendered as text wordmarks (no image files required). Leave url as "#"
    until there's a real link — media.html renders "#" as plain
    (non-clickable) text instead of a dead link. To use a real logo image
    instead of a text wordmark, add a "logo" field with an image path and
    update renderLogos() in media.html to prefer it when present.
+
+   "visible: false" hides an entry from the public page while keeping the
+   record in place. Used below for development placeholders that don't
+   represent a real logo/organization yet — remove the flag (or the
+   whole "visible" key) once the entry is real.
    ---------------------------------------------------------------------- */
 const featuredInLogos = [
   { name: 'X Spaces', url: 'https://x.com/MrManXRP' },
-  { name: '[Podcast Name]', url: '#' },
-  { name: '[Publication Name]', url: '#' },
-  { name: '[YouTube Channel]', url: '#' },
-  { name: '[Conference Name]', url: '#' },
-  { name: '[Partner Organization]', url: '#' }
+  { name: '[Podcast Name]', url: '#', visible: false },
+  { name: '[Publication Name]', url: '#', visible: false },
+  { name: '[YouTube Channel]', url: '#', visible: false },
+  { name: '[Conference Name]', url: '#', visible: false },
+  { name: '[Partner Organization]', url: '#', visible: false }
 ];
 
 
@@ -85,46 +90,129 @@ const mediaTopics = [
 /* ----------------------------------------------------------------------
    FEATURED APPEARANCES (podcasts, X Spaces, YouTube, interviews)
    Shape: {
-     title: string,            presentation / episode title
-     org: string,              host, show, or channel name
-     date: string,             display string, e.g. "2026" or "March 2026"
-     type: string,             "Podcast" | "X Spaces" | "YouTube" | "Interview" ...
-     description: string,      one to two sentence summary
-     url: string,              link to the recording. Leave as "#" until
-                                a real link exists — media.html renders
-                                "#" as disabled "Coming Soon" text instead
-                                of a dead link.
-     placeholder: boolean      true = shows a "Sample" tag; remove once real
+     id: string,                stable short slug, used only for structured
+                                 data / future linking — not displayed
+     title: string,             published episode/video title
+     org: string,               organization the appearance is with
+     date: string,               display string, e.g. "February 24, 2025"
+     isoDate: string,           the same date as YYYY-MM-DD, used for
+                                 sorting and structured data — not displayed
+     duration: string,          display runtime, e.g. "1:00:06"
+     isoDuration: string,       the same runtime as an ISO 8601 duration
+                                 (e.g. "PT1H0M6S"), used only for
+                                 structured data — not displayed
+     type: string,              platform / format shown on the card badge:
+                                 "Podcast" | "X Spaces" | "YouTube" | "Interview" ...
+     mrManRole: string,         Mr. Man's role in the appearance (e.g.
+                                 "Interviewer", "Host / Interviewer")
+     hosts: string[],           who hosted, always includes "Mr. Man"
+     guests: string[],          guest name — role/organization, as billed
+     description: string,       short, factual card summary (1–2 sentences)
+     fullDescription: string,   the fuller original summary, kept for
+                                 reference / future use — not rendered on
+                                 the card today
+     topics: string[],          tag metadata for future filtering/search —
+                                 not currently displayed anywhere
+     chapters: string[],        optional — published video chapter topics,
+                                 kept for reference only, not displayed
+     url: string,               link to the recording. Leave as "#" until
+                                 a real link exists — media.html renders
+                                 "#" as disabled "Coming Soon" text instead
+                                 of a dead link.
+     videoId: string,           YouTube video ID (for thumbnail/embed URLs)
+     thumbnail: string,         thumbnail image URL
+     thumbnailAlt: string,      descriptive alt text for the thumbnail
+     status: string,            e.g. "website-ready" — informational only,
+                                 not currently used to filter rendering
+     placeholder: boolean       true = shows a "Sample" tag; omit once real
    }
-   Newest first is the recommended order, but any order is fine.
+   Sort order: newest first (by isoDate).
    ---------------------------------------------------------------------- */
 const mediaAppearances = [
   {
-    title: '[Episode / Segment Title]',
-    org: '[Podcast or Channel Name]',
-    date: '2026',
-    type: 'Podcast',
-    description: 'Placeholder summary of the discussion — replace with a short, factual description once the appearance is confirmed.',
-    url: '#',
-    placeholder: true
-  },
-  {
-    title: '[Episode / Segment Title]',
-    org: '[X Spaces Host]',
-    date: '2026',
-    type: 'X Spaces',
-    description: 'Placeholder summary of the discussion — replace with a short, factual description once the appearance is confirmed.',
-    url: '#',
-    placeholder: true
-  },
-  {
-    title: '[Episode / Segment Title]',
-    org: '[YouTube Channel]',
-    date: '2026',
+    id: 'cosmos-ian-kane',
+    title: 'Ian from Cosmos breaks down the necessity for tokenized deposits',
+    org: 'Cosmos',
+    date: 'July 30, 2026',
+    isoDate: '2026-07-30',
+    duration: '57:34',
+    isoDuration: 'PT57M34S',
     type: 'YouTube',
-    description: 'Placeholder summary of the discussion — replace with a short, factual description once the appearance is confirmed.',
-    url: '#',
-    placeholder: true
+    mrManRole: 'Interviewer',
+    hosts: ['Mr. Man'],
+    guests: ['Ian Kane'],
+    description: 'Mr. Man speaks with Ian Kane of Cosmos about tokenized deposits, interoperability, IBC versus bridges, ATOM token economics, and how Basel III intersects with decentralization.',
+    fullDescription: 'Mr. Man speaks with Ian Kane from Cosmos about tokenized deposits, the Cosmos ecosystem, institutional versus retail crypto, interoperability, IBC versus bridges, ATOM token economics, regulation, Basel III, trust, and decentralization.',
+    topics: ['Cosmos', 'Tokenized Deposits', 'Blockchain', 'Interoperability', 'IBC', 'ATOM', 'Institutional Crypto', 'Regulation', 'Basel III', 'Decentralization'],
+    chapters: ["Ian's Background", 'From Unbanked to Cosmos', 'What Makes Cosmos Different', 'Who This Technology Serves', 'Retail vs. Institutional Crypto', 'IBC vs. Bridges', 'ATOM Token Economics', 'Regulation and Basel III', 'Trust and Decentralization'],
+    url: 'https://www.youtube.com/watch?v=d_3VZE7JDFE',
+    videoId: 'd_3VZE7JDFE',
+    thumbnail: 'https://i.ytimg.com/vi/d_3VZE7JDFE/hqdefault.jpg',
+    thumbnailAlt: 'Thumbnail for the interview with Ian Kane of Cosmos on tokenized deposits and the Cosmos ecosystem',
+    status: 'website-ready'
+  },
+  {
+    id: 'anodos-finance',
+    title: 'A look inside institutional DeFi: Anodos Finance',
+    org: 'Anodos Finance',
+    date: 'May 28, 2026',
+    isoDate: '2026-05-28',
+    duration: '55:11',
+    isoDuration: 'PT55M11S',
+    type: 'YouTube',
+    mrManRole: 'Host / Interviewer',
+    hosts: ['Mr. Man', 'Roman Inochovsky'],
+    guests: ['Panos', 'Peter Condilis'],
+    description: 'Mr. Man and Roman Inochovsky speak with Panos and Peter Condilis of Anodos Finance about institutional DeFi, liquidity infrastructure, and the case for Anodos.',
+    fullDescription: 'Mr. Man and Roman Inochovsky sit down with Panos and Peter Condilis from Anodos Finance to discuss the evolution of DeFi, institutional liquidity, financial infrastructure, why Anodos exists, and the opportunity for participants to own a piece of Anodos.',
+    topics: ['Anodos Finance', 'Institutional DeFi', 'Liquidity', 'Financial Infrastructure', 'XRPL', 'Onchain Finance', 'DeFi'],
+    url: 'https://www.youtube.com/watch?v=CzUCzHeRZGI',
+    videoId: 'CzUCzHeRZGI',
+    thumbnail: 'https://i.ytimg.com/vi/CzUCzHeRZGI/hqdefault.jpg',
+    thumbnailAlt: 'Thumbnail for the interview with Panos and Peter Condilis of Anodos Finance on institutional DeFi',
+    status: 'website-ready'
+  },
+  {
+    id: 'tetra-digital-cadd',
+    title: 'Canada’s Regulated Stablecoin Regulations | Niomi H of Tetra Digital Group on CADD & Custody',
+    org: 'Tetra Digital Group',
+    date: 'May 14, 2026',
+    isoDate: '2026-05-14',
+    duration: '40:59',
+    isoDuration: 'PT40M59S',
+    type: 'YouTube',
+    mrManRole: 'Host / Interviewer',
+    hosts: ['Mr. Man', 'Roman Inochovsky'],
+    guests: ['Niomi Henry — Associate of Strategy & Partnerships, Tetra Digital Group'],
+    description: 'Mr. Man and Roman Inochovsky speak with Niomi Henry of Tetra Digital Group about CADD, custody, and Canada’s developing stablecoin framework under Bill C-15.',
+    fullDescription: 'Mr. Man and Roman Inochovsky speak with Niomi Henry, Associate of Strategy & Partnerships at Tetra Digital Group, about CADD, custody, Canada’s developing stablecoin framework, Bill C-15, and institutional adoption of regulated Canadian-dollar digital assets.',
+    topics: ['CADD', 'Stablecoins', 'Canadian Dollar', 'Custody', 'Regulation', 'Bill C-15', 'Institutional Adoption', 'Tetra Digital Group', 'Digital Payments'],
+    url: 'https://www.youtube.com/watch?v=qq227dzLMac',
+    videoId: 'qq227dzLMac',
+    thumbnail: 'https://i.ytimg.com/vi/qq227dzLMac/hqdefault.jpg',
+    thumbnailAlt: 'Thumbnail for the interview with Niomi Henry of Tetra Digital Group on Canada’s regulated stablecoin framework',
+    status: 'website-ready'
+  },
+  {
+    id: 'eteu-xdc',
+    title: '@eteutech Turns Trade Paperwork Digital with XDC',
+    org: 'eTEU',
+    date: 'February 24, 2025',
+    isoDate: '2025-02-24',
+    duration: '1:00:06',
+    isoDuration: 'PT1H0M6S',
+    type: 'YouTube',
+    mrManRole: 'Interviewer',
+    hosts: ['Mr. Man'],
+    guests: ['Eduard Oboimov — CEO, eTEU', 'Kristian Volohhonski — COO, eTEU'],
+    description: 'Mr. Man speaks with eTEU CEO Eduard Oboimov and COO Kristian Volohhonski about digitizing trade documentation on the XDC Network, including electronic bills of lading and smart-contract automation for cross-border trade.',
+    fullDescription: 'Mr. Man speaks with Eduard Oboimov, CEO of eTEU, and Kristian Volohhonski, COO of eTEU, about digitizing trade documentation using XDC Network. The discussion explores paperless trade, electronic bills of lading, trade-finance infrastructure, smart-contract automation, and making international trade workflows faster, cheaper, easier to track, and legally usable across jurisdictions.',
+    topics: ['XDC', 'eTEU', 'Trade Finance', 'Digital Trade', 'Electronic Bills of Lading', 'Paperless Trade', 'RWA', 'Blockchain Infrastructure'],
+    url: 'https://www.youtube.com/watch?v=d69vZmjKxyU',
+    videoId: 'd69vZmjKxyU',
+    thumbnail: 'https://i.ytimg.com/vi/d69vZmjKxyU/hqdefault.jpg',
+    thumbnailAlt: 'Thumbnail for the interview with Eduard Oboimov and Kristian Volohhonski of eTEU on digitizing trade documentation with XDC Network',
+    status: 'website-ready'
   }
 ];
 
@@ -146,6 +234,10 @@ const mediaAppearances = [
    Note: real events (e.g. Ripple Swell, SmartCon, KBW, Cosmoverse) should
    only be added here once confirmed — do not list an event as an
    appearance until it is actually booked.
+
+   "visible: false" hides an entry from the public page while keeping the
+   record in place — used below because both entries are still
+   development placeholders, not confirmed conferences.
    ---------------------------------------------------------------------- */
 const mediaConferences = [
   {
@@ -155,7 +247,8 @@ const mediaConferences = [
     date: '2026',
     topic: '[Presentation or Panel Title]',
     status: 'upcoming',
-    url: '#'
+    url: '#',
+    visible: false
   },
   {
     event: '[Conference Name]',
@@ -164,7 +257,8 @@ const mediaConferences = [
     date: '2025',
     topic: '[Presentation or Panel Title]',
     status: 'completed',
-    url: '#'
+    url: '#',
+    visible: false
   }
 ];
 
@@ -205,33 +299,6 @@ const pressKitAssets = [
   { name: 'Media Photos', meta: 'ZIP · JPG', file: 'assets/press-kit/media-photos.zip', available: false },
   { name: 'Brand Assets', meta: 'ZIP · Colors, type, marks', file: 'assets/press-kit/brand-assets.zip', available: false },
   { name: 'Speaker One Sheet', meta: 'PDF', file: 'assets/press-kit/speaker-one-sheet.pdf', available: false }
-];
-
-
-/* ----------------------------------------------------------------------
-   TESTIMONIALS
-   Shape: { quote: string, name: string, org: string, initials: string }
-   "initials" fills the placeholder avatar circle until real photos exist.
-   ---------------------------------------------------------------------- */
-const mediaTestimonials = [
-  {
-    quote: '[Placeholder quote describing the discussion and its value to their audience.]',
-    name: '[Name]',
-    org: '[Organization / Show]',
-    initials: 'XX'
-  },
-  {
-    quote: '[Placeholder quote describing the discussion and its value to their audience.]',
-    name: '[Name]',
-    org: '[Organization / Show]',
-    initials: 'XX'
-  },
-  {
-    quote: '[Placeholder quote describing the discussion and its value to their audience.]',
-    name: '[Name]',
-    org: '[Organization / Show]',
-    initials: 'XX'
-  }
 ];
 
 

@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:wght@300;400;500&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#B8922A;--gold-pale:rgba(184,146,42,0.08);--ink:#1A1A1A;--grey:#6B6B6B;--gl:#9A9A9A;--border:rgba(0,0,0,0.08)}
+:root{--gold:#B8922A;--gold-pale:rgba(184,146,42,0.08);--ink:#1A1A1A;--grey:#6B6B6B;--gl:#767676;--border:rgba(0,0,0,0.08)}
 html,body{background:#fff!important;color:var(--ink);font-family:'Barlow',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
 *{color-scheme:light!important}
 a{text-decoration:none}
@@ -37,6 +37,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .nav-links a[aria-current="page"]{color:var(--gold)}
 .nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:9px 22px;transition:all 0.2s}
 .nav-cta:hover{background:var(--ink);color:#fff}
+.nav-actions{display:flex;align-items:center;gap:12px}
+
+/* MOBILE NAV TOGGLE (hidden above 768px; see MOBILE block) */
+.nav-toggle{display:none;position:relative;width:36px;height:36px;flex-shrink:0;background:none;border:1px solid var(--border);padding:0;cursor:pointer;transition:border-color 0.2s}
+.nav-toggle:hover{border-color:var(--ink)}
+.nav-toggle-bar{position:absolute;top:17px;left:9px;width:18px;height:1px;background:var(--ink);transition:transform 0.25s ease,background-color 0.2s ease}
+.nav-toggle-bar::before,.nav-toggle-bar::after{content:'';position:absolute;left:0;width:18px;height:1px;background:var(--ink);transition:transform 0.25s ease}
+.nav-toggle-bar::before{top:-6px}
+.nav-toggle-bar::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar{background:transparent}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar::after{transform:translateY(-6px) rotate(-45deg)}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:100px 48px 72px;position:relative;overflow:hidden}
@@ -119,9 +131,11 @@ footer{background:var(--ink);padding:44px 48px}
 /* Appearance cards */
 .appear-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
 .appear-card{background:#fff;display:flex;flex-direction:column}
-.appear-thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#232323,#111);position:relative;display:flex;align-items:center;justify-content:center}
-.appear-play{width:0;height:0;border-style:solid;border-width:8px 0 8px 14px;border-color:transparent transparent transparent rgba(255,255,255,0.9)}
-.appear-type{position:absolute;top:12px;left:12px;font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,0.4);padding:4px 9px}
+.appear-thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#232323,#111);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.appear-thumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.appear-thumb-shade{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.35),rgba(0,0,0,0.15));z-index:1}
+.appear-play{position:relative;z-index:2;width:0;height:0;border-style:solid;border-width:8px 0 8px 14px;border-color:transparent transparent transparent rgba(255,255,255,0.9)}
+.appear-type{position:absolute;top:12px;left:12px;z-index:2;font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,0.4);padding:4px 9px}
 .appear-body{padding:20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
 .appear-org{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold)}
 .appear-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;line-height:1.3;color:var(--ink)}
@@ -154,15 +168,6 @@ footer{background:var(--ink);padding:44px 48px}
 .press-meta{font-size:11.5px;font-weight:300;color:var(--gl)}
 .press-dl{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-top:auto;padding-top:8px}
 
-/* Testimonials grid */
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
-.testi-card{background:#fff;padding:28px}
-.testi-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;font-weight:300;line-height:1.6;color:var(--ink);margin-bottom:22px}
-.testi-person{display:flex;align-items:center;gap:12px}
-.testi-avatar{width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;flex-shrink:0}
-.testi-name{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink)}
-.testi-org{font-size:11.5px;font-weight:300;color:var(--gl)}
-
 /* FAQ */
 .faq-list{max-width:760px}
 .faq-item{border-bottom:1px solid var(--border)}
@@ -178,6 +183,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 /* REDUCED MOTION */
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
+  .nav-toggle-bar,.nav-toggle-bar::before,.nav-toggle-bar::after{transition:none}
 }
 
 /* DISABLED PLACEHOLDER LINKS */
@@ -188,7 +194,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 
 /* MOBILE */
 @media(max-width:768px){
-  nav{padding:0 20px}.nav-links{display:none}
+  nav{padding:0 20px}
+  .nav-toggle{display:block}
+  .nav-links{display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 12px 24px rgba(0,0,0,0.08);max-height:0;overflow-y:auto;opacity:0;visibility:hidden;transition:max-height 0.3s ease,opacity 0.25s ease;z-index:99}
+  .nav-links.open{max-height:min(480px,calc(100vh - 84px));opacity:1;visibility:visible}
+  .nav-links a{padding:16px 20px;font-size:12px;border-bottom:1px solid var(--border)}
+  .nav-links a:last-child{border-bottom:none}
   .hero{padding:88px 20px 56px}
   .dark{padding:56px 20px}
   .featured-in{padding:36px 20px}
@@ -198,6 +209,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   .conf-card{grid-template-columns:1fr;gap:12px}
   .conf-side{align-items:flex-start}
   .booking-panel{padding:40px 24px}
+}
+
+/* MOBILE + REDUCED MOTION (placed after MOBILE so it wins the cascade
+   when both conditions match — same specificity, source order decides) */
+@media(max-width:768px) and (prefers-reduced-motion:reduce){
+  .nav-links{transition:none}
 }
 </style>
 </head>
@@ -209,15 +226,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
     <img src="assets/logo.png" alt="Mr. Man">
     <span class="nav-brand">Mr. Man</span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="mobile-nav" aria-label="Mobile navigation">
     <a href="/">Home</a>
-    <a href="/#inside">Inside</a>
-    <a href="/#capitalos">CapitalOS</a>
+    <a href="/inside">Inside</a>
+    <a href="/capitalos">CapitalOS</a>
     <a href="/media" aria-current="page">Media</a>
-    <a href="/#pricing">Pricing</a>
-    <a href="/#about">About</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/about">About</a>
   </div>
-  <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+  <div class="nav-actions">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -343,17 +365,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="sec" id="testimonials">
-  <div class="sec-inner">
-    <div class="reveal" style="margin-bottom:32px;">
-      <div class="kicker">What Hosts Say</div>
-      <h2>From past <em>conversations.</em></h2>
-    </div>
-    <div class="testi-grid reveal d1" id="testi-grid"></div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="sec" id="faq">
   <div class="sec-inner">
@@ -386,11 +397,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
     </div>
     <div class="foot-links">
       <a href="/">Home</a>
-      <a href="/#inside">Inside</a>
-      <a href="/#capitalos">CapitalOS</a>
+      <a href="/inside">Inside</a>
+      <a href="/capitalos">CapitalOS</a>
       <a href="/media">Media</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/#about">About</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
     </div>
     <div class="foot-links">
       <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join Now</a>
@@ -402,6 +413,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 </footer>
 
 <script src="assets/media-data.js"></script>
+<script src="assets/mobile-nav.js"></script>
 <script>
 /* ============================================================
    MEDIA PAGE — RENDER LOGIC
@@ -430,9 +442,10 @@ function emptyState(list, message){
 
 function renderLogos(){
   const el = document.getElementById('logo-wall');
-  const empty = emptyState(featuredInLogos, 'Logos coming soon.');
+  const logos = featuredInLogos.filter(l => l && l.visible !== false);
+  const empty = emptyState(logos, 'Logos coming soon.');
   if (empty) { el.innerHTML = empty; return; }
-  el.innerHTML = featuredInLogos.map(l => {
+  el.innerHTML = logos.map(l => {
     const name = esc(l && l.name || 'Untitled');
     return isLink(l && l.url)
       ? `<a class="logo-item" href="${esc(l.url)}" target="_blank" rel="noopener">${name}</a>`
@@ -470,9 +483,14 @@ function renderAppearances(){
     const watch = isLink(a && a.url)
       ? `<a class="appear-watch" href="${esc(a.url)}" target="_blank" rel="noopener">Watch &rarr;</a>`
       : `<span class="appear-watch link-disabled" aria-disabled="true">Coming Soon</span>`;
+    const thumb = a && a.thumbnail
+      ? `<img class="appear-thumb-img" src="${esc(a.thumbnail)}" alt="${esc(a.thumbnailAlt || a.title || 'Appearance thumbnail')}" loading="lazy"><div class="appear-thumb-shade" aria-hidden="true"></div>`
+      : '';
+    const dateLine = [a && a.date, a && a.duration].filter(Boolean).join(' · ');
     return `
     <div class="appear-card">
       <div class="appear-thumb">
+        ${thumb}
         <span class="appear-type">${esc(a && a.type || 'Appearance')}</span>
         <div class="appear-play" aria-hidden="true"></div>
       </div>
@@ -480,7 +498,7 @@ function renderAppearances(){
         ${a && a.placeholder ? '<span class="tag-sample">Sample</span>' : ''}
         <div class="appear-org">${esc(a && a.org || 'Unannounced')}</div>
         <div class="appear-title">${esc(a && a.title || 'Untitled')}</div>
-        <div class="appear-date">${esc(a && a.date || '')}</div>
+        <div class="appear-date">${esc(dateLine)}</div>
         <div class="appear-desc">${esc(a && a.description || '')}</div>
         ${watch}
       </div>
@@ -489,11 +507,37 @@ function renderAppearances(){
   }).join('');
 }
 
+// Emits schema.org VideoObject structured data for the appearances that
+// are actual videos (have a videoId + isoDate + isoDuration). Built only
+// from fields already supplied in mediaAppearances — no invented upload
+// dates, descriptions, authors, publishers, or view counts.
+function renderVideoStructuredData(){
+  const videos = mediaAppearances.filter(a => a && a.videoId && a.isoDate && a.isoDuration);
+  if (videos.length === 0) return;
+  const data = videos.map(a => ({
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: a.title,
+    description: a.description,
+    thumbnailUrl: a.thumbnail,
+    uploadDate: a.isoDate,
+    duration: a.isoDuration,
+    embedUrl: `https://www.youtube.com/embed/${a.videoId}`,
+    url: a.url
+  }));
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.id = 'video-structured-data';
+  script.textContent = JSON.stringify(data.length === 1 ? data[0] : data);
+  document.head.appendChild(script);
+}
+
 function renderConferences(){
   const el = document.getElementById('conf-list');
-  const empty = emptyState(mediaConferences, 'No conference appearances announced yet.');
+  const conferences = mediaConferences.filter(c => c && c.visible !== false);
+  const empty = emptyState(conferences, 'No conference appearances announced yet.');
   if (empty) { el.innerHTML = empty; return; }
-  el.innerHTML = mediaConferences.map(c => {
+  el.innerHTML = conferences.map(c => {
     const details = isLink(c && c.url)
       ? `<a class="appear-watch" href="${esc(c.url)}" target="_blank" rel="noopener">Details &rarr;</a>`
       : `<span class="appear-watch link-disabled" aria-disabled="true">Details Soon</span>`;
@@ -542,24 +586,6 @@ function renderPressKit(){
   }).join('');
 }
 
-function renderTestimonials(){
-  const el = document.getElementById('testi-grid');
-  const empty = emptyState(mediaTestimonials, 'Testimonials coming soon.');
-  if (empty) { el.innerHTML = empty; return; }
-  el.innerHTML = mediaTestimonials.map(t => `
-    <div class="testi-card">
-      <div class="testi-quote">&ldquo;${esc(t && t.quote || '')}&rdquo;</div>
-      <div class="testi-person">
-        <div class="testi-avatar" aria-hidden="true">${esc(t && t.initials || '?')}</div>
-        <div>
-          <div class="testi-name">${esc(t && t.name || 'Anonymous')}</div>
-          <div class="testi-org">${esc(t && t.org || '')}</div>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
 function renderFaqs(){
   const el = document.getElementById('faq-list');
   const empty = emptyState(mediaFaqs, 'FAQs coming soon.');
@@ -576,10 +602,10 @@ renderLogos();
 renderBio();
 renderTopics();
 renderAppearances();
+renderVideoStructuredData();
 renderConferences();
 renderAvailableFor();
 renderPressKit();
-renderTestimonials();
 renderFaqs();
 
 // Reveal on scroll
