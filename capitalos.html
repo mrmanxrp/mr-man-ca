@@ -137,6 +137,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   footer{padding:36px 20px}.foot-inner{flex-direction:column}
 }
 
+@media(max-width:340px){
+  nav{padding:0 12px}.nav-brand{display:none}.nav-actions{gap:8px}.nav-cta{padding:9px 14px}
+}
+
 @media(max-width:768px) and (prefers-reduced-motion:reduce){
   .nav-links{transition:none}
 }
@@ -162,7 +166,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
       <span class="nav-toggle-bar" aria-hidden="true"></span>
     </button>
-    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" rel="noopener">Join $97</a>
   </div>
 </nav>
 
@@ -188,14 +192,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <div class="reveal d1">
       <div class="cap-wrap">
         <div class="cap-track" id="cap-track">
-          <img src="assets/capitalos-1.jpg" alt="CapitalOS product screen">
-          <img src="assets/capitalos-2.jpg" alt="CapitalOS product screen">
-          <img src="assets/capitalos-3.jpg" alt="CapitalOS product screen">
-          <img src="assets/capitalos-4.jpg" alt="CapitalOS product screen">
-          <img src="assets/capitalos-5.jpg" alt="CapitalOS product screen">
+          <img src="assets/capitalos-1.jpg" alt="CapitalOS product screen 1" fetchpriority="high">
+          <img src="assets/capitalos-2.jpg" alt="CapitalOS product screen 2" loading="lazy">
+          <img src="assets/capitalos-3.jpg" alt="CapitalOS product screen 3" loading="lazy">
+          <img src="assets/capitalos-4.jpg" alt="CapitalOS product screen 4" loading="lazy">
+          <img src="assets/capitalos-5.jpg" alt="CapitalOS product screen 5" loading="lazy">
         </div>
-        <button class="cap-btn" onclick="prevSlide()" style="left:8px;" aria-label="Previous screen">&#8592;</button>
-        <button class="cap-btn" onclick="nextSlide()" style="right:8px;" aria-label="Next screen">&#8594;</button>
+        <button type="button" class="cap-btn" onclick="prevSlide()" style="left:8px;" aria-label="Previous screen">&#8592;</button>
+        <button type="button" class="cap-btn" onclick="nextSlide()" style="right:8px;" aria-label="Next screen">&#8594;</button>
       </div>
       <div class="cap-dots" id="cap-dots"></div>
     </div>
@@ -237,7 +241,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <div>
       <div class="foot-brand">Mr. Man</div>
       <div class="foot-sub">Mr Man, LLC Delaware</div>
-      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
+      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
     </div>
     <div class="foot-links">
       <a href="/">Home</a>
@@ -248,9 +252,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       <a href="/about">About</a>
     </div>
     <div class="foot-links">
-      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join Now</a>
-      <a href="https://x.com/MrManXRP" target="_blank">@MrManXRP</a>
-      <a href="https://www.skywealthdigital.com" target="_blank">Sky Wealth Digital</a>
+      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" rel="noopener">Join Now</a>
+      <a href="https://x.com/MrManXRP" target="_blank" rel="noopener">@MrManXRP</a>
     </div>
   </div>
   <div class="foot-copy">2026 Mr Man, LLC. All rights reserved.</div>
@@ -269,6 +272,7 @@ const ct=document.getElementById('cap-track');
 const dotsEl=document.getElementById('cap-dots');
 for(let i=0;i<slideCount;i++){
   const b=document.createElement('button');
+  b.type='button';
   b.className='cap-dot'+(i===0?' on':'');
   b.setAttribute('aria-label','Go to screen '+(i+1));
   b.onclick=()=>goSlide(i);
@@ -277,11 +281,15 @@ for(let i=0;i<slideCount;i++){
 const dots=dotsEl.querySelectorAll('.cap-dot');
 function render(){
   ct.style.transform='translateX(-'+(ci*100)+'%)';
-  dots.forEach((d,i)=>d.classList.toggle('on',i===ci));
+  dots.forEach((d,i)=>{
+    d.classList.toggle('on',i===ci);
+    d.setAttribute('aria-current',i===ci?'true':'false');
+  });
 }
 function goSlide(n){ci=n;render()}
 function nextSlide(){ci=(ci+1)%slideCount;render()}
 function prevSlide(){ci=(ci+slideCount-1)%slideCount;render()}
+render();
 let autoplay=setInterval(nextSlide,4500);
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 if(reduceMotion.matches){clearInterval(autoplay)}

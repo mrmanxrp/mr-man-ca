@@ -209,10 +209,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   .conf-card{grid-template-columns:1fr;gap:12px}
   .conf-side{align-items:flex-start}
   .booking-panel{padding:40px 24px}
+  .appear-grid{grid-template-columns:minmax(0,1fr)}
 }
 
 /* MOBILE + REDUCED MOTION (placed after MOBILE so it wins the cascade
    when both conditions match — same specificity, source order decides) */
+@media(max-width:340px){
+  nav{padding:0 12px}.nav-brand{display:none}.nav-actions{gap:8px}.nav-cta{padding:9px 14px}
+}
+
 @media(max-width:768px) and (prefers-reduced-motion:reduce){
   .nav-links{transition:none}
 }
@@ -238,7 +243,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
       <span class="nav-toggle-bar" aria-hidden="true"></span>
     </button>
-    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" rel="noopener">Join $97</a>
   </div>
 </nav>
 
@@ -321,31 +326,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
         <div class="creds" id="available-for"></div>
       </div>
       <div class="reveal d1">
-        <!--
-          SCHEDULING WIDGET INTEGRATION POINT
-          ------------------------------------------------------------
-          Replace the contents of #booking-embed below with a live
-          scheduling widget when one is ready. Two common options:
-
-          Cal.com (inline embed):
-            <div id="booking-embed" data-cal-link="your-handle/interview"
-                 style="width:100%;height:600px;"></div>
-            <script src="https://app.cal.com/embed/embed.js"></script>
-
-          Calendly (inline embed):
-            <div id="booking-embed" class="calendly-inline-widget"
-                 data-url="https://calendly.com/your-handle/interview"
-                 style="min-width:320px;height:630px;"></div>
-            <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-          Until a widget is connected, the placeholder panel below is
-          shown and the fallback link routes to X.
-        -->
-        <div id="booking-embed" class="booking-panel">
-          <div class="booking-panel-title">Scheduling Widget</div>
-          <p class="booking-panel-note">A live calendar will be embedded here. In the meantime, send a request directly.</p>
+        <div class="booking-panel">
+          <div class="booking-panel-title">Interview Requests</div>
+          <p class="booking-panel-note">Send the format, proposed topics, audience, and timeline directly on X.</p>
           <div class="booking-panel-fallback">
-            <a href="https://x.com/MrManXRP" target="_blank" class="btn-gold">Request on X</a>
+            <a href="https://x.com/MrManXRP" target="_blank" rel="noopener" class="btn-gold">Request on X</a>
           </div>
         </div>
       </div>
@@ -393,7 +378,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
     <div>
       <div class="foot-brand">Mr. Man</div>
       <div class="foot-sub">Mr Man, LLC Delaware</div>
-      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
+      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
     </div>
     <div class="foot-links">
       <a href="/">Home</a>
@@ -404,9 +389,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <a href="/about">About</a>
     </div>
     <div class="foot-links">
-      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join Now</a>
-      <a href="https://x.com/MrManXRP" target="_blank">@MrManXRP</a>
-      <a href="https://www.skywealthdigital.com" target="_blank">Sky Wealth Digital</a>
+      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" rel="noopener">Join Now</a>
+      <a href="https://x.com/MrManXRP" target="_blank" rel="noopener">@MrManXRP</a>
     </div>
   </div>
   <div class="foot-copy">2026 Mr Man, LLC. All rights reserved.</div>
@@ -536,7 +520,7 @@ function renderConferences(){
   const el = document.getElementById('conf-list');
   const conferences = mediaConferences.filter(c => c && c.visible !== false);
   const empty = emptyState(conferences, 'No conference appearances announced yet.');
-  if (empty) { el.innerHTML = empty; return; }
+  if (empty) { el.closest('section').hidden = true; return; }
   el.innerHTML = conferences.map(c => {
     const details = isLink(c && c.url)
       ? `<a class="appear-watch" href="${esc(c.url)}" target="_blank" rel="noopener">Details &rarr;</a>`
@@ -570,9 +554,10 @@ function renderAvailableFor(){
 
 function renderPressKit(){
   const el = document.getElementById('press-grid');
-  const empty = emptyState(pressKitAssets, 'Press kit assets coming soon.');
-  if (empty) { el.innerHTML = empty; return; }
-  el.innerHTML = pressKitAssets.map(p => {
+  const assets = pressKitAssets.filter(p => p && p.available && isLink(p.file));
+  const empty = emptyState(assets, 'Press kit assets coming soon.');
+  if (empty) { el.closest('section').hidden = true; return; }
+  el.innerHTML = assets.map(p => {
     const dl = p && p.available && isLink(p.file)
       ? `<a class="press-dl" href="${esc(p.file)}" download>Download &darr;</a>`
       : `<span class="press-dl link-disabled" aria-disabled="true">Available Soon</span>`;

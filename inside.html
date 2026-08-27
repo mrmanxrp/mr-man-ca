@@ -143,6 +143,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   footer{padding:36px 20px}.foot-inner{flex-direction:column}
 }
 
+@media(max-width:340px){
+  nav{padding:0 12px}.nav-brand{display:none}.nav-actions{gap:8px}.nav-cta{padding:9px 14px}
+}
+
 @media(max-width:768px) and (prefers-reduced-motion:reduce){
   .nav-links{transition:none}
 }
@@ -168,7 +172,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
       <span class="nav-toggle-bar" aria-hidden="true"></span>
     </button>
-    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" rel="noopener">Join $97</a>
   </div>
 </nav>
 
@@ -185,14 +189,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 <!-- CONTENT -->
 <section class="sec" id="content">
   <div class="sec-inner">
-    <div class="tabs-nav reveal">
-      <button class="tbtn on" onclick="switchTab(this,'intelligence')">Intelligence</button>
-      <button class="tbtn" onclick="switchTab(this,'education')">Education</button>
-      <button class="tbtn" onclick="switchTab(this,'structure')">Structure</button>
-      <button class="tbtn" onclick="switchTab(this,'schedule')">Schedule</button>
+    <div class="tabs-nav reveal" role="tablist" aria-label="Inside the community">
+      <button type="button" class="tbtn on" id="tab-button-intelligence" role="tab" aria-selected="true" aria-controls="tab-intelligence" tabindex="0" onclick="switchTab(this,'intelligence')">Intelligence</button>
+      <button type="button" class="tbtn" id="tab-button-education" role="tab" aria-selected="false" aria-controls="tab-education" tabindex="-1" onclick="switchTab(this,'education')">Education</button>
+      <button type="button" class="tbtn" id="tab-button-structure" role="tab" aria-selected="false" aria-controls="tab-structure" tabindex="-1" onclick="switchTab(this,'structure')">Structure</button>
+      <button type="button" class="tbtn" id="tab-button-schedule" role="tab" aria-selected="false" aria-controls="tab-schedule" tabindex="-1" onclick="switchTab(this,'schedule')">Schedule</button>
     </div>
 
-    <div class="tpane on" id="tab-intelligence">
+    <div class="tpane on" id="tab-intelligence" role="tabpanel" aria-labelledby="tab-button-intelligence" tabindex="0">
       <div class="two">
         <div>
           <p style="font-size:14px;font-weight:300;line-height:1.9;color:var(--grey);margin-bottom:20px;">An LLM-powered briefing that continuously learns. Institutional-grade audio intelligence delivered every morning, every evening, and at any significant moment in the markets or regulatory landscape.</p>
@@ -212,11 +216,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       </div>
     </div>
 
-    <div class="tpane" id="tab-education">
+    <div class="tpane" id="tab-education" role="tabpanel" aria-labelledby="tab-button-education" tabindex="0">
       <div class="two">
         <div>
           <p style="font-size:14px;font-weight:300;line-height:1.9;color:var(--grey);margin-bottom:24px;">The curriculum is live inside the community under School. History of money, cryptocurrency fundamentals, digital assets, CBDC use cases, and positioning metrics. PDFs, videos, conferences, and live interactions.</p>
-          <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" class="btn-gold">Access the Curriculum</a>
+          <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" rel="noopener" class="btn-gold">Access the Curriculum</a>
         </div>
         <div class="sched">
           <div class="srow"><div class="swhen">Module I</div><div class="swhat">History of Money<span>Commodity money to Bretton Woods to what comes next.</span></div></div>
@@ -227,12 +231,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       </div>
     </div>
 
-    <div class="tpane" id="tab-structure">
+    <div class="tpane" id="tab-structure" role="tabpanel" aria-labelledby="tab-button-structure" tabindex="0">
       <div class="two">
         <div>
           <p style="font-size:14px;font-weight:300;line-height:1.9;color:var(--grey);margin-bottom:8px;">We do not just teach you what to own. We teach you how to own it.</p>
           <p style="font-size:14px;font-weight:300;line-height:1.9;color:var(--grey);margin-bottom:24px;">Holding assets in the wrong structure costs you money every year. We teach LLC formation, entity architecture, asset migration, and the legal frameworks that protect serious wealth.</p>
-          <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" class="btn-gold">Join to Learn Structure</a>
+          <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" rel="noopener" class="btn-gold">Join to Learn Structure</a>
         </div>
         <div class="creds">
           <div class="cred"><div class="cdot"></div><div><div class="ctitle">LLC Formation</div><div class="cdesc">Why entities exist, how to form them, what belongs inside them.</div></div></div>
@@ -243,10 +247,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       </div>
     </div>
 
-    <div class="tpane" id="tab-schedule">
+    <div class="tpane" id="tab-schedule" role="tabpanel" aria-labelledby="tab-button-schedule" tabindex="0">
       <div class="sched">
         <div class="srow"><div class="swhen">Daily</div><div class="swhat">Intelligence Briefings<span>Morning, evening, and significant event alerts.</span></div></div>
-        <div class="srow"><div class="swhen">Wednesday 7:30 EST</div><div class="swhat">DeFi Wednesdays<span>Live with <a href="https://x.com/FlareForward" target="_blank" style="color:var(--gold);">@FlareForward</a>. DeFi deep dives and positioning.</span></div></div>
+        <div class="srow"><div class="swhen">Wednesday 7:30 EST</div><div class="swhat">DeFi Wednesdays<span>Live with <a href="https://x.com/FlareForward" target="_blank" rel="noopener" style="color:var(--gold);">@FlareForward</a>. DeFi deep dives and positioning.</span></div></div>
         <div class="srow"><div class="swhen">Friday 7:30 EST</div><div class="swhat">War Room Fridays<span>End of week analysis. What happened, what it means.</span></div></div>
         <div class="srow"><div class="swhen">Last Saturday 7:30 EST</div><div class="swhat">LLC Structure Meeting<span>Asset protection, entity formation, tax mitigation.</span></div></div>
         <div class="srow"><div class="swhen">Always On</div><div class="swhat">School<span>Full curriculum live. PDFs, videos, and more.</span></div></div>
@@ -272,7 +276,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <div>
       <div class="foot-brand">Mr. Man</div>
       <div class="foot-sub">Mr Man, LLC Delaware</div>
-      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
+      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
     </div>
     <div class="foot-links">
       <a href="/">Home</a>
@@ -283,9 +287,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       <a href="/about">About</a>
     </div>
     <div class="foot-links">
-      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join Now</a>
-      <a href="https://x.com/MrManXRP" target="_blank">@MrManXRP</a>
-      <a href="https://www.skywealthdigital.com" target="_blank">Sky Wealth Digital</a>
+      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" rel="noopener">Join Now</a>
+      <a href="https://x.com/MrManXRP" target="_blank" rel="noopener">@MrManXRP</a>
     </div>
   </div>
   <div class="foot-copy">2026 Mr Man, LLC. All rights reserved.</div>
@@ -300,10 +303,30 @@ document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 // Tabs
 function switchTab(btn,name){
   document.querySelectorAll('.tpane').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tbtn').forEach(b=>{
+    b.classList.remove('on');
+    b.setAttribute('aria-selected','false');
+    b.tabIndex=-1;
+  });
   document.getElementById('tab-'+name).classList.add('on');
   btn.classList.add('on');
+  btn.setAttribute('aria-selected','true');
+  btn.tabIndex=0;
 }
+
+const tabButtons=[...document.querySelectorAll('[role="tab"]')];
+tabButtons.forEach((tab,index)=>tab.addEventListener('keydown',event=>{
+  let nextIndex;
+  if(event.key==='ArrowRight') nextIndex=(index+1)%tabButtons.length;
+  else if(event.key==='ArrowLeft') nextIndex=(index+tabButtons.length-1)%tabButtons.length;
+  else if(event.key==='Home') nextIndex=0;
+  else if(event.key==='End') nextIndex=tabButtons.length-1;
+  else return;
+  event.preventDefault();
+  const next=tabButtons[nextIndex];
+  switchTab(next,next.getAttribute('aria-controls').replace('tab-',''));
+  next.focus();
+}));
 </script>
 </body>
 </html>

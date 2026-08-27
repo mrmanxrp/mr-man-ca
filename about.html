@@ -124,6 +124,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   footer{padding:36px 20px}.foot-inner{flex-direction:column}
 }
 
+@media(max-width:340px){
+  nav{padding:0 12px}.nav-brand{display:none}.nav-actions{gap:8px}.nav-cta{padding:9px 14px}
+}
+
 @media(max-width:768px) and (prefers-reduced-motion:reduce){
   .nav-links{transition:none}
 }
@@ -149,7 +153,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
       <span class="nav-toggle-bar" aria-hidden="true"></span>
     </button>
-    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join $97</a>
+    <a class="nav-cta" href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" rel="noopener">Join $97</a>
   </div>
 </nav>
 
@@ -174,15 +178,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           <p>He operates across real estate, tokenized assets, crypto, stablecoins, DeFi, traditional equities, precious metals, and infinite banking structures. Not as a trader chasing price as an operator building position.</p>
           <p>Today that same systems discipline runs the community, the research, and the intelligence briefings inside Mr. Man: separating signal from noise across financial market infrastructure, digital assets, payments, tokenization, regulation, and macroeconomics.</p>
         </div>
-        <a href="https://x.com/MrManXRP" target="_blank" class="social-lnk">Follow @MrManXRP on X</a>
+        <a href="https://x.com/MrManXRP" target="_blank" rel="noopener" class="social-lnk">Follow @MrManXRP on X</a>
       </div>
       <div class="reveal d1">
         <div class="partner-label">In Partnership With</div>
         <div class="partner-list">
-          <a href="https://www.skywealthdigital.com" target="_blank" style="display:block;">
+          <div>
             <img src="assets/partner-skywealth.jpg" alt="Sky Wealth Digital Holdings" style="height:48px;object-fit:contain;">
-          </a>
-          <a href="https://store.dcentwallet.com/yut7ym" target="_blank" style="display:block;">
+          </div>
+          <a href="https://store.dcentwallet.com/yut7ym" target="_blank" rel="noopener" style="display:block;">
             <img src="assets/partner-dcent.jpg" alt="D'CENT Wallet" style="height:40px;object-fit:contain;">
           </a>
         </div>
@@ -208,7 +212,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <div>
       <div class="foot-brand">Mr. Man</div>
       <div class="foot-sub">Mr Man, LLC Delaware</div>
-      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
+      <div class="foot-sub" style="margin-top:4px;"><a href="https://x.com/MrManXRP" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.35);">@MrManXRP</a></div>
     </div>
     <div class="foot-links">
       <a href="/">Home</a>
@@ -219,9 +223,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       <a href="/about">About</a>
     </div>
     <div class="foot-links">
-      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank">Join Now</a>
-      <a href="https://x.com/MrManXRP" target="_blank">@MrManXRP</a>
-      <a href="https://www.skywealthdigital.com" target="_blank">Sky Wealth Digital</a>
+      <a href="https://whop.com/mr-man-24bb/financial-intelligence-68/" target="_blank" rel="noopener">Join Now</a>
+      <a href="https://x.com/MrManXRP" target="_blank" rel="noopener">@MrManXRP</a>
     </div>
   </div>
   <div class="foot-copy">2026 Mr Man, LLC. All rights reserved.</div>
