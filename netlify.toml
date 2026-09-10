@@ -1,0 +1,48 @@
+[[redirects]]
+from = "/index.html"
+to = "/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/inside.html"
+to = "/inside"
+status = 301
+force = true
+
+[[redirects]]
+from = "/capitalos.html"
+to = "/capitalos"
+status = 301
+force = true
+
+[[redirects]]
+from = "/media.html"
+to = "/media"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pricing.html"
+to = "/pricing"
+status = 301
+force = true
+
+[[redirects]]
+from = "/about.html"
+to = "/about"
+status = 301
+force = true
+
+[[headers]]
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=86400, must-revalidate"
