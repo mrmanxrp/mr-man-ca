@@ -69,20 +69,12 @@ const featuredInLogos = [
    Reorder, add, or remove freely — the grid reflows automatically.
    ---------------------------------------------------------------------- */
 const mediaTopics = [
-  { title: 'Financial Market Infrastructure', icon: 'grid', description: 'How legacy rails, clearing systems, and settlement networks are being replaced by modern infrastructure.' },
-  { title: 'Stablecoins', icon: 'coin', description: 'The mechanics, risks, and growing role of stablecoins within global payment systems.' },
-  { title: 'Digital Assets', icon: 'layers', description: 'How digital assets are classified, custodied, and integrated into existing financial structures.' },
-  { title: 'Tokenization', icon: 'cube', description: 'The migration of real-world assets onto programmable, on-chain infrastructure.' },
-  { title: 'Payment Systems', icon: 'exchange', description: 'ISO 20022 migration and the modernization of how value moves between institutions.' },
-  { title: 'Cross-Border Settlement', icon: 'globe', description: 'How international settlement is being redesigned for speed, transparency, and cost.' },
-  { title: 'Central Bank Digital Currency Research', icon: 'bank', description: 'Jurisdiction-by-jurisdiction analysis of central bank digital currency development.' },
-  { title: 'AI and Financial Intelligence', icon: 'cpu', description: 'Applying AI to continuous market monitoring, research synthesis, and decision support.' },
-  { title: 'Risk Analysis', icon: 'shield', description: 'Frameworks for evaluating structural risk separate from short-term price volatility.' },
-  { title: 'Macro Economics', icon: 'trending', description: 'Reading monetary policy, liquidity cycles, and macro signals as they relate to positioning.' },
-  { title: 'Self Custody', icon: 'lock', description: 'Practical approaches to holding and securing digital assets independently.' },
-  { title: 'Institutional Adoption', icon: 'building', description: 'How banks, asset managers, and corporates are entering digital asset markets.' },
-  { title: 'Regulatory Change', icon: 'scale', description: 'Tracking legislation and policy shaping the future of digital assets and payments.' },
-  { title: 'How We Analyze Change', icon: 'compass', description: 'The research process behind separating signal from noise in a fast-moving system.' }
+  { title: 'How Money Moves', icon: 'exchange', description: 'Payment systems, ISO 20022, clearing, settlement, and the modernization of cross-border finance.' },
+  { title: 'What Is Moving Onchain', icon: 'cube', description: 'Digital assets, tokenization, custody, self-custody, and the infrastructure connecting real-world assets to blockchain networks.' },
+  { title: 'How Institutions Are Adapting', icon: 'building', description: 'The practical adoption of digital assets by banks, asset managers, corporations, and market-infrastructure providers.' },
+  { title: 'How Digital Money Is Evolving', icon: 'coin', description: 'Stablecoins, central bank digital currencies, and the changing relationship between public and private money.' },
+  { title: 'What Changes the Risk Picture', icon: 'shield', description: 'Monetary policy, liquidity, regulation, structural risk, and the forces shaping long-term positioning.' },
+  { title: 'How We Separate Signal From Noise', icon: 'compass', description: 'Primary-source research, technical standards, institutional evidence, and AI-assisted analysis of complex developments.' }
 ];
 
 
