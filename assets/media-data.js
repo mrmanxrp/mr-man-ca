@@ -77,7 +77,6 @@ const mediaTopics = [
   { title: 'Cross-Border Settlement', icon: 'globe', description: 'How international settlement is being redesigned for speed, transparency, and cost.' },
   { title: 'Central Bank Digital Currency Research', icon: 'bank', description: 'Jurisdiction-by-jurisdiction analysis of central bank digital currency development.' },
   { title: 'AI and Financial Intelligence', icon: 'cpu', description: 'Applying AI to continuous market monitoring, research synthesis, and decision support.' },
-  { title: 'CapitalOS', icon: 'terminal', description: 'The operating system approach to structuring, tracking, and protecting long-term capital.' },
   { title: 'Risk Analysis', icon: 'shield', description: 'Frameworks for evaluating structural risk separate from short-term price volatility.' },
   { title: 'Macro Economics', icon: 'trending', description: 'Reading monetary policy, liquidity cycles, and macro signals as they relate to positioning.' },
   { title: 'Self Custody', icon: 'lock', description: 'Practical approaches to holding and securing digital assets independently.' },
