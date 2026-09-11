@@ -130,6 +130,27 @@ const mediaTopics = [
    ---------------------------------------------------------------------- */
 const mediaAppearances = [
   {
+    id: 'maximuscrypto-xrp-flip',
+    title: '🚨XRP Holders! Prof. Sung Says Flip Has Already Happened! This Was Wiped From Public View, But Why?!',
+    org: 'MaximusCrypto',
+    date: 'September 8, 2026',
+    isoDate: '2026-09-08',
+    duration: '39:55',
+    isoDuration: 'PT39M55S',
+    type: 'YouTube',
+    mrManRole: 'Research Contributor',
+    hosts: ['MaximusCrypto'],
+    guests: [],
+    description: 'Mr. Man provided the research featured in this MaximusCrypto episode examining Professor Austin Sung’s comments about the financial system, XRP, and material removed from public view.',
+    fullDescription: 'Mr. Man provided all research used in this MaximusCrypto episode, which examines Professor Austin Sung’s comments about changes in the financial system, XRP, and material that was removed from public view.',
+    topics: ['XRP', 'Professor Austin Sung', 'Financial System', 'Research', 'Digital Assets'],
+    url: 'https://www.youtube.com/watch?v=H7uEsl8cwow',
+    videoId: 'H7uEsl8cwow',
+    thumbnail: '/assets/maximuscrypto-xrp-flip.jpg',
+    thumbnailAlt: 'MaximusCrypto video thumbnail reading Switch Already Flipped and Wiped From Public View, with Professor Austin Sung and the XRP symbol',
+    status: 'website-ready'
+  },
+  {
     id: 'cosmos-ian-kane',
     title: 'Ian from Cosmos breaks down the necessity for tokenized deposits',
     org: 'Cosmos',
