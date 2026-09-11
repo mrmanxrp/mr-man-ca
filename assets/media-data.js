@@ -244,41 +244,38 @@ const mediaAppearances = [
      logo: string,              text wordmark shown in place of an image
      location: string,
      date: string,
-     topic: string,             presentation / panel title
+     topic: string,             intended coverage focus or presentation title
      status: 'upcoming' | 'completed',
      url: string                event page, recap, or recording. Leave as
                                  "#" until a real link exists — media.html
                                  renders "#" as disabled "Details Soon"
                                  text instead of a dead link.
    }
-   Note: real events (e.g. Ripple Swell, SmartCon, KBW, Cosmoverse) should
-   only be added here once confirmed — do not list an event as an
-   appearance until it is actually booked.
-
-   "visible: false" hides an entry from the public page while keeping the
-   record in place — used below because both entries are still
-   development placeholders, not confirmed conferences.
+   Only confirmed attendance, coverage, or speaking engagements belong
+   here. Keep events under consideration off the public page.
    ---------------------------------------------------------------------- */
 const mediaConferences = [
   {
-    event: '[Conference Name]',
-    logo: '[Conference Name]',
-    location: '[City, Country]',
-    date: '2026',
-    topic: '[Presentation or Panel Title]',
+    event: 'Swell 2026',
+    logo: 'Ripple Swell',
+    location: 'New York City',
+    date: 'October 27–29, 2026',
+    topic: 'Payments, tokenization, digital-asset infrastructure, and institutional adoption.',
     status: 'upcoming',
-    url: '#',
-    visible: false
+    statusLabel: 'Attending',
+    url: 'https://swell.ripple.com/',
+    visible: true
   },
   {
-    event: '[Conference Name]',
-    logo: '[Conference Name]',
-    location: '[City, Country]',
-    date: '2025',
-    topic: '[Presentation or Panel Title]',
-    status: 'completed',
-    url: '#',
-    visible: false
+    event: 'Link:NYC',
+    logo: 'Chainlink',
+    location: 'New York City',
+    date: 'October 29, 2026',
+    topic: 'Institutional RWAs, interoperability, financial-market infrastructure, stablecoins, and payments.',
+    status: 'upcoming',
+    statusLabel: 'Attending',
+    url: 'https://chain.link/events/linknyc',
+    visible: true
   }
 ];
 
