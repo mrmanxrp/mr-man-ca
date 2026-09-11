@@ -308,9 +308,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 <section class="sec" id="conferences">
   <div class="sec-inner">
     <div class="reveal" style="margin-bottom:32px;">
-      <div class="kicker">Conferences &amp; Live Events</div>
-      <h2>Where I've <em>shown up.</em></h2>
-      <p class="sec-desc">Speaking engagements and panels, upcoming and completed.</p>
+      <div class="kicker">Upcoming Field Coverage</div>
+      <h2>Where I'll <em>be.</em></h2>
+      <p class="sec-desc">Confirmed events where I'll be following the people and infrastructure shaping the next financial system.</p>
     </div>
     <div class="conf-list reveal d1" id="conf-list"></div>
   </div>
@@ -533,6 +533,7 @@ function renderConferences(){
       ? `<a class="appear-watch" href="${esc(c.url)}" target="_blank" rel="noopener">Details &rarr;</a>`
       : `<span class="appear-watch link-disabled" aria-disabled="true">Details Soon</span>`;
     const completed = c && c.status === 'completed';
+    const statusLabel = c && c.statusLabel ? c.statusLabel : (completed ? 'Completed' : 'Upcoming');
     return `
     <div class="conf-card">
       <div class="conf-logo">${esc(c && c.logo || c && c.event || 'Untitled Event')}</div>
@@ -542,7 +543,7 @@ function renderConferences(){
         <div class="conf-topic">${esc(c && c.topic || '')}</div>
       </div>
       <div class="conf-side">
-        <div class="conf-status ${completed ? 'completed' : ''}">${completed ? 'Completed' : 'Upcoming'}</div>
+        <div class="conf-status ${completed ? 'completed' : ''}">${esc(statusLabel)}</div>
         ${details}
       </div>
     </div>
