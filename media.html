@@ -121,7 +121,7 @@ footer{background:var(--ink);padding:44px 48px}
 .logo-item:hover{opacity:1;color:var(--grey)}
 
 /* Topics grid */
-.topics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.topics-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
 .topic-card{background:#fff;padding:28px 24px}
 .topic-icon{width:26px;height:26px;color:var(--gold);margin-bottom:18px}
 .topic-icon svg{width:100%;height:100%;display:block}
@@ -193,6 +193,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 /* EMPTY STATE (shown when a data array is empty) */
 .empty-state{grid-column:1/-1;width:100%;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gl);padding:32px 24px;text-align:center;background:#fff}
 
+@media(max-width:900px){
+  .topics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 /* MOBILE */
 @media(max-width:768px){
   nav{padding:0 20px}
@@ -211,6 +215,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   .conf-side{align-items:flex-start}
   .booking-panel{padding:40px 24px}
   .appear-grid{grid-template-columns:minmax(0,1fr)}
+}
+
+@media(max-width:520px){
+  .topics-grid{grid-template-columns:minmax(0,1fr)}
 }
 
 /* MOBILE + REDUCED MOTION (placed after MOBILE so it wins the cascade
@@ -280,18 +288,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   </div>
 </section>
 
-<!-- TOPICS -->
-<section class="sec" id="topics">
-  <div class="sec-inner">
-    <div class="reveal" style="margin-bottom:32px;">
-      <div class="kicker">Discussion Topics</div>
-      <h2>What we can <em>talk about.</em></h2>
-      <p class="sec-desc">A working list of subject areas. Every discussion is grounded in research and official sources rather than speculation.</p>
-    </div>
-    <div class="topics-grid reveal d1" id="topics-grid"></div>
-  </div>
-</section>
-
 <!-- FEATURED APPEARANCES -->
 <section class="sec" id="appearances">
   <div class="sec-inner">
@@ -313,6 +309,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <p class="sec-desc">Confirmed events where I'll be following the people and infrastructure shaping the next financial system.</p>
     </div>
     <div class="conf-list reveal d1" id="conf-list"></div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section class="sec" id="topics">
+  <div class="sec-inner">
+    <div class="reveal" style="margin-bottom:32px;">
+      <div class="kicker">Discussion Focus</div>
+      <h2>What your audience will <em>understand.</em></h2>
+      <p class="sec-desc">I help audiences understand how financial systems are changing, what is already being built, and why those developments matter.</p>
+    </div>
+    <div class="topics-grid reveal d1" id="topics-grid"></div>
   </div>
 </section>
 
@@ -403,7 +411,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   <div class="foot-copy">2026 Mr Man, LLC. All rights reserved.</div>
 </footer>
 
-<script src="assets/media-data.js?v=20260911-1"></script>
+<script src="assets/media-data.js?v=20260911-2"></script>
 <script src="assets/mobile-nav.js"></script>
 <script>
 /* ============================================================
