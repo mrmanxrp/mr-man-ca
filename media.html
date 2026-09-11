@@ -160,6 +160,7 @@ footer{background:var(--ink);padding:44px 48px}
 .booking-panel-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
 .booking-panel-note{font-size:13px;font-weight:300;line-height:1.8;color:var(--grey);max-width:420px;margin:0 auto}
 .booking-panel-fallback{margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}
+.booking-panel-actions{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap}
 
 /* Press Kit */
 .press-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
@@ -328,9 +329,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <div class="reveal d1">
         <div class="booking-panel">
           <div class="booking-panel-title">Interview Requests</div>
-          <p class="booking-panel-note">Send the format, proposed topics, audience, and timeline directly on X.</p>
+          <p class="booking-panel-note">Choose an available time for a 30-minute media or speaking inquiry. For press requests that do not require a meeting, message directly on X.</p>
           <div class="booking-panel-fallback">
-            <a href="https://x.com/MrManXRP" target="_blank" rel="noopener" class="btn-gold">Request on X</a>
+            <div class="booking-panel-actions">
+              <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0a495ODxGTNXd1zGDMzMQ1goqLY80aDgTPckNzEj-qCb9YZGxd46j-1zLB80TcrvSgYptMVuhf" target="_blank" rel="noopener" class="btn-gold">Check Availability</a>
+              <a href="https://x.com/MrManXRP" target="_blank" rel="noopener" class="btn-text">Message on X</a>
+            </div>
           </div>
         </div>
       </div>

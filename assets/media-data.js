@@ -332,6 +332,6 @@ const mediaFaqs = [
   { q: 'Do you accept conference invitations?', a: 'Yes. I speak on panels and present sessions focused on systemic change in financial infrastructure. Use the booking section below or reach out with event details, audience, and format.' },
   { q: 'Do you participate in podcasts?', a: 'Yes, both as a guest and in longer-form recorded conversations. I favor research-driven formats over reactive commentary.' },
   { q: 'Can founders request interviews?', a: 'Yes. I speak with project founders about infrastructure, tokenization, and adoption when there is a genuine, substantive angle to discuss.' },
-  { q: 'How do I schedule an appearance?', a: 'Use the scheduling widget in the Book Mr. Man section. Include the format, proposed topics, and timeline so the request can be reviewed quickly.' },
+  { q: 'How do I schedule an appearance?', a: 'Use Check Availability in the Book Mr. Man section to request a 30-minute media or speaking call. For press requests that do not require a meeting, message directly on X.' },
   { q: 'Can discussions be recorded live?', a: 'Yes, live formats including X Spaces, live-streamed panels, and recorded video interviews are all welcome.' }
 ];
