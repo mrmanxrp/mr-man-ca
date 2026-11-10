@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+<title id="title">XRPD Interview — Stolen crypto, tracing versus recovery</title>
+<desc id="desc">Mr Man interview with Dr. Patria Smith. An abstract blockchain tracing graphic beside text reading Stolen Crypto? Trace does not equal Recover.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#091421"/><stop offset="1" stop-color="#163452"/></linearGradient><radialGradient id="halo"><stop stop-color="#26506f" stop-opacity=".75"/><stop offset="1" stop-color="#17334f" stop-opacity="0"/></radialGradient></defs>
+<rect width="1280" height="720" fill="url(#bg)"/><rect width="1280" height="9" fill="#c9a04f"/><rect y="711" width="1280" height="9" fill="#c9a04f"/>
+<circle cx="980" cy="370" r="310" fill="url(#halo)"/><path d="M66 124V618" stroke="#c9a04f" stroke-width="5"/><path d="M92 118h510" stroke="#c9a04f" opacity=".6" stroke-width="2"/>
+<g fill="none" stroke="#5b9abc" stroke-width="2" opacity=".48"><path d="M740 171 837 227 963 124 1071 212 1170 148 1224 257 1098 314 1189 464 1070 570 927 522 808 607 748 460 856 352 740 171Z"/><path d="m837 227 261 87-171 208-119 85m155-483-107 228 333 112"/></g>
+<g fill="#70b4db"><circle cx="740" cy="171" r="6"/><circle cx="837" cy="227" r="6"/><circle cx="963" cy="124" r="6"/><circle cx="1071" cy="212" r="6"/><circle cx="1170" cy="148" r="6"/><circle cx="1224" cy="257" r="6"/><circle cx="1098" cy="314" r="6"/><circle cx="1189" cy="464" r="6"/><circle cx="1070" cy="570" r="6"/><circle cx="927" cy="522" r="6"/><circle cx="808" cy="607" r="6"/><circle cx="748" cy="460" r="6"/></g>
+<circle cx="977" cy="374" r="175" fill="#102641" stroke="#d6aa4e" stroke-width="9"/>
+<circle cx="977" cy="374" r="152" fill="none" stroke="#60a2cc" stroke-width="3" opacity=".7"/>
+<path d="M813 448 892 389l85 18 86-78 76-45" fill="none" stroke="#e6bc5f" stroke-width="10"/>
+<g fill="#e6bc5f" stroke="#102641" stroke-width="5"><circle cx="813" cy="448" r="14"/><circle cx="892" cy="389" r="14"/><circle cx="977" cy="407" r="14"/><circle cx="1063" cy="329" r="14"/><circle cx="1139" cy="284" r="14"/></g>
+<circle cx="1006" cy="330" r="63" fill="none" stroke="#f4f7fa" stroke-width="11"/><path d="m1050 374 76 76" fill="none" stroke="#f4f7fa" stroke-width="16"/>
+<g font-family="Arial, sans-serif"><text x="92" y="86" fill="#d8b76a" font-size="26" font-weight="bold" letter-spacing="2">MR MAN  /  THE INTERVIEWS</text><text x="85" y="270" fill="#f4f6f8" font-size="114" font-weight="900">STOLEN</text><text x="82" y="383" fill="#ffd264" font-size="113" font-weight="900">CRYPTO?</text><rect x="90" y="419" rx="14" width="573" height="73" fill="#cda34f"/><text x="114" y="473" fill="#f7fbff" font-size="43" font-weight="800">TRACE ≠ RECOVER</text><text x="92" y="560" fill="#d6e5ed" font-size="30" font-weight="bold">XRPD × DR. PATRIA SMITH</text><text x="93" y="603" fill="#a8c0cf" font-size="23">A 55-MINUTE CONVERSATION</text></g>
+</svg>
