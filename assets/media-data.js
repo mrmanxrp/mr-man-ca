@@ -120,6 +120,30 @@ const mediaTopics = [
    Sort order: newest first (by isoDate).
    ---------------------------------------------------------------------- */
 const mediaAppearances = [
+  // XRPD production is staged; only populate isoDate, videoId and url after
+  // YouTube scheduling and the website release have been confirmed.
+  {
+    id: 'xrpd-patria-smith',
+    title: 'Where Does Stolen Crypto Go? — XRPD Interview with Dr. Patria Smith',
+    org: 'XRPD',
+    date: 'Recorded October 16, 2026',
+    isoDate: '',
+    duration: '55:19',
+    isoDuration: 'PT55M19S',
+    type: 'Interview',
+    mrManRole: 'Host / Interviewer',
+    hosts: ['Mr. Man'],
+    guests: ['Dr. Patria Smith — XRPD founder'],
+    description: 'Mr. Man speaks with Dr. Patria Smith about cryptocurrency fraud tracing, forensic evidence, exchanges, investigative standards, and the distinction between tracing funds and recovering them.',
+    fullDescription: 'A 55-minute interview covering XRPD\'s Defraud Wizard, company background, wallet tracing, the role of exchanges and law enforcement, wallet safety, and guest-reported case studies. Outcomes and claims are not presented as independently verified.',
+    topics: ['Fraud Prevention', 'Blockchain Forensics', 'Cryptocurrency', 'XRP', 'XRPD', 'Wallet Security'],
+    chapters: ['Founding XRPD', 'How the Defraud Wizard works', 'Exchanges and law enforcement', 'Tracing versus recovery', 'Investigative standards', 'Wallet and support safety'],
+    url: '#',
+    videoId: '',
+    thumbnail: '/assets/xrpd-interview-art.svg',
+    thumbnailAlt: 'Editorial graphic: Stolen crypto? Trace does not equal recover. XRPD with Dr. Patria Smith.',
+    status: 'release-draft'
+  },
   {
     id: 'maximuscrypto-xrp-flip',
     title: '🚨XRP Holders! Prof. Sung Says Flip Has Already Happened! This Was Wiped From Public View, But Why?!',
