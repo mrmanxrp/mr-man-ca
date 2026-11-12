@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light only">
-<meta name="robots" content="noindex,nofollow">
+<meta name="robots" content="index,follow">
 <title>XRPD Interview — Tracing Crypto Fraud | Mr. Man</title>
 <meta name="description" content="Mr. Man speaks with Dr. Patria Smith of XRPD about tracing stolen cryptocurrency, forensic reports, exchanges, investigation standards and the limits of recovery.">
 <link rel="canonical" href="https://mr-man.ca/interviews/xrpd/">
@@ -62,12 +62,13 @@ footer{padding:26px 28px;border-top:1px solid var(--rule);font-size:13px;text-al
  <h1>When cryptocurrency is stolen, <em>where does it go?</em></h1>
  <p class="lead">I sat down with Dr. Patria Smith, founder of XRPD, to explore blockchain fraud tracing, how investigators organize evidence, and a distinction that matters: following a transaction is not the same as recovering the money.</p>
  <div class="metadata"><span>Mr Man with Dr. Patria Smith</span><span>55:19</span><span>Recorded conversation</span></div>
- <div class="video" id="xrpd-video" data-youtube-id="" aria-label="XRPD interview video">
+ <div class="video" id="xrpd-video" data-youtube-id="MRSrwZlSqxY" aria-label="XRPD interview video">
    <div class="video-preview" id="video-preview">
     <img src="/assets/xrpd-interview-art.svg" alt="XRPD interview thumbnail: Stolen crypto? Trace does not equal recover">
     <div class="pending"><strong>Full interview release forthcoming</strong>The video will play here after its scheduled YouTube publication.</div>
    </div>
  </div>
+ <noscript><p><a href="https://www.youtube.com/watch?v=MRSrwZlSqxY">Watch the XRPD interview on YouTube</a></p></noscript>
  <p class="notice"><strong>A note about the discussion:</strong> Claims made by the guest about XRPD's technology, results, case studies and services reflect what she describes in the interview. Tracing cryptocurrency is not a promise of recovery. No private keys or recovery phrases should ever be given to an investigation service.</p>
  <section class="grid">
   <article>
@@ -89,6 +90,9 @@ footer{padding:26px 28px;border-top:1px solid var(--rule);font-size:13px;text-al
    <h2 style="font-size:36px;margin-top:9px">Dr. Patria Smith</h2>
    <p>Founder of XRPD. We discuss the company's fraud tracing and investor research offerings, their limitations and where outside professionals may be needed.</p>
    <hr class="rule">
+   <div class="aside-label">Watch</div>
+   <p><a href="https://www.youtube.com/watch?v=MRSrwZlSqxY" target="_blank" rel="noopener noreferrer" class="btn">Watch on YouTube</a></p>
+   <hr class="rule">
    <div class="aside-label">Explore</div>
    <p><a href="https://www.xrpd.io/defraud-wizard" target="_blank" rel="noopener noreferrer">XRPD Defraud Wizard</a></p>
    <p><a href="https://linktr.ee/XRPD" target="_blank" rel="noopener noreferrer">XRPD's official link collection</a></p>
@@ -99,12 +103,13 @@ footer{padding:26px 28px;border-top:1px solid var(--rule);font-size:13px;text-al
 <footer>Mr Man · Independent conversations on digital assets, financial infrastructure and the systems shaping our future. &nbsp; <a href="/disclaimer">Disclaimer</a></footer>
 <script>
 (function () {
-  // Set data-youtube-id to the verified 11-character ID after YouTube scheduling.
+  // The user supplied the video ID; YouTube playback availability depends on its visibility settings.
   const host = document.getElementById('xrpd-video');
   const id = host.getAttribute('data-youtube-id') || '';
   if (/^[A-Za-z0-9_-]{11}$/.test(id)) {
     const frame = document.createElement('iframe');
     frame.className = 'video-frame';
+    frame.loading = 'lazy';
     frame.title = 'XRPD interview with Dr. Patria Smith';
     frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id);
     frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
