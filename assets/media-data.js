@@ -138,11 +138,11 @@ const mediaAppearances = [
     fullDescription: 'A 55-minute interview covering XRPD\'s Defraud Wizard, company background, wallet tracing, the role of exchanges and law enforcement, wallet safety, and guest-reported case studies. Outcomes and claims are not presented as independently verified.',
     topics: ['Fraud Prevention', 'Blockchain Forensics', 'Cryptocurrency', 'XRP', 'XRPD', 'Wallet Security'],
     chapters: ['Founding XRPD', 'How the Defraud Wizard works', 'Exchanges and law enforcement', 'Tracing versus recovery', 'Investigative standards', 'Wallet and support safety'],
-    url: '#',
-    videoId: '',
+    url: 'https://www.youtube.com/watch?v=MRSrwZlSqxY',
+    videoId: 'MRSrwZlSqxY',
     thumbnail: '/assets/xrpd-interview-art.svg',
     thumbnailAlt: 'Editorial graphic: Stolen crypto? Trace does not equal recover. XRPD with Dr. Patria Smith.',
-    status: 'release-draft'
+    status: 'website-ready'
   },
   {
     id: 'maximuscrypto-xrp-flip',
